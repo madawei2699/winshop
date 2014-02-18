@@ -2,7 +2,7 @@
 // 本类由系统自动生成，仅供测试用途
 namespace Home\Controller;
 use Think\Controller\RestController;
-class IndexController extends RestController {
+class UserController extends RestController {
 
 	public function index() {
 		// echo "index";
@@ -19,9 +19,24 @@ class IndexController extends RestController {
 	}
 
 
-	public function read_json() {
+	public function login_get() {
 
-		echo "string";
-		// $this->display();
+		// print_r($list);
+		// echo "login";
+		echo $this->_method;
+		$this->display();
 	}
+
+	public function login_post() {
+
+		// print_r($list);
+		// echo "login";
+		// $this->display();
+		echo $this->_method;
+	}
+
+	public function login_put() {
+		echo $this->_method;
+	}
+
 }

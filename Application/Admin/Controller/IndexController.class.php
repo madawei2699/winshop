@@ -1,21 +1,17 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
-namespace Home\Controller;
+namespace Admin\Controller;
 use Think\Controller\RestController;
 class IndexController extends RestController {
 
 	public function index() {
-		// echo "index";
+		echo "admin/index";
 		$this->display();
-		// $list = D('Goods')->get();
-		// $this->response($list, 'json');
 	}
 
-	public function get() {
-		$list = D('Goods')->get();
-		// print_r($list);
-		$this->response($list, 'json');
-		// $this->display();
+	public function add_goods() {
+		echo "add_goods";
+
 	}
 
 

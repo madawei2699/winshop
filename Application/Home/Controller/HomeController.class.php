@@ -2,7 +2,7 @@
 // 本类由系统自动生成，仅供测试用途
 namespace Home\Controller;
 use Think\Controller\RestController;
-class IndexController extends RestController {
+class HomeController extends RestController {
 
 	public function index() {
 		// echo "index";
