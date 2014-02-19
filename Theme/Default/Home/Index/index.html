@@ -1,7 +1,21 @@
 <extend name="Base/common"/>
+
+
 <block name="body">
 
+	<div class="container main">
+		<div class="row">
+			<div class="col-lg-12">
+				<ul class="menu">
+			    <li><a href="#/view1">view1</a></li>
+			    <li><a href="#/view2">view2</a></li>
+			  </ul>
 
+			  <div ng-view></div>
+			  -------------------
+			  <div ng-view></div>
 
-
+			</div>
+		</div>
+	</div>
 </block>

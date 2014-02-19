@@ -2,7 +2,7 @@
 return array(
 	/* 系统配置 */
 	// 'DEFAULT_MODULE' => 'Home',
-	// 'VIEW_PATH' => './Theme/'.THEME_NAME.'/',
+	'VIEW_PATH' => './Theme/'.THEME_NAME.'/',
 	'URL_HTML_SUFFIX' => '',
 	'URL_MODEL' => 2,
 
