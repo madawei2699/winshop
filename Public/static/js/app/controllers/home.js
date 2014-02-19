@@ -1,6 +1,6 @@
 'use strict';
 
-winshop.controller('MainCtrl', function($scope) {
+winshop.controller('userController', function($scope) {
 
   $scope.catalog = [
     { name: 'shoes', price: 29.99, rating: 2.8 },

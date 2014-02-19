@@ -22,7 +22,8 @@
 			<ul class="nav navbar-nav navbar-right">
 				<if condition="is_login()">
 					<li><a href="{:U('User/Index/index')}"><span class="glyphicon glyphicon-cog"></span> 管理中心</a></li>
-					<li><a href="/#" onclick="Javascript:window.open('{:U('Home/User/logout')}','_blank')" ><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
+					<li><a href="{:U('Home/User/logout')}"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
+
 				<else/>
 					<li><a href="{:U('Home/User/login')}"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
 					<li><a href="{:U('Home/User/register')}"><span class="glyphicon glyphicon-edit"></span> 申请试用</a></li>

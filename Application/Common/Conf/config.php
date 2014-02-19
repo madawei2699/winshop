@@ -1,7 +1,10 @@
 <?php
 return array(
 	/* 系统配置 */
+	// 'DEFAULT_MODULE' => 'Home',
 	// 'VIEW_PATH' => './Theme/'.THEME_NAME.'/',
+	'URL_HTML_SUFFIX' => '',
+	'URL_MODEL' => 2,
 
 	/* 调试配置 */
 	'SHOW_PAGE_TRACE' => false,
@@ -11,6 +14,11 @@ return array(
 	'URL_MODEL' => 3, //URL模式
 	'VAR_URL_PARAMS' => '', // PATHINFO URL参数变量
 	'URL_PATHINFO_DEPR' => '/', //PATHINFO URL分割符
+
+
+	/* 用户相关设置 */
+  'USER_MAX_CACHE' => 1000, //最大缓存用户数
+  'USER_ADMINISTRATOR' => 1, //管理员用户ID
 
 
 	/* 数据库配置 */
@@ -26,6 +34,6 @@ return array(
 	'URL_ROUTER_ON' => true, //开启路由
 	'URL_ROUTE_RULES' => array( //定义路由规则
 	  // 'api/:token' => 'Home/Weixin/index',
-	  array('login/:id', 'login/login_put','', array('ext'=>'json', 'method'=>'put')),
+
 	 ),
 );
