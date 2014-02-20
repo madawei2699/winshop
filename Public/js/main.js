@@ -5,28 +5,20 @@
  */
 require.config({
 
-    paths: {
-        'angular': '../lib/angular/angular',
-        'angular-route': '../lib/angular-route/angular-route',
-        'domReady': '../lib/requirejs-domready/domReady',
-        'jquery': 'lib/jquery/jquery'
-    },
+	paths: {
+		'domReady': '../lib/requirejs-domready/domReady',
+		'jquery': 'lib/jquery/jquery'
+	},
 
-    /**
-     * for libs that either do not support AMD out of the box, or
-     * require some fine tuning to dependency mgt'
-     */
-    shim: {
-        'angular': {
-            exports: 'angular'
-        },
-        'angular-route': {
-            deps: ['angular']
-        }
-    },
+	/**
+	 * for libs that either do not support AMD out of the box, or
+	 * require some fine tuning to dependency mgt'
+	 */
+	shim: {
+	},
 
-    deps: [
-        // kick start application... see bootstrap.js
-        './bootstrap'
-    ]
+	deps: [
+		// kick start application... see bootstrap.js
+		'./bootstrap'
+	]
 });
