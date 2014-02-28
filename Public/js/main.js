@@ -1,24 +1,41 @@
-/**
- * configure RequireJS
- * prefer named modules to long paths, especially for version mgt
- * or 3rd party libraries
- */
 require.config({
-
 	paths: {
-		'domReady': '../lib/requirejs-domready/domReady',
-		'jquery': 'lib/jquery/jquery'
+		'jquery': 'lib/jquery/jquery',
+		'bootstrap': 'lib/bootstrap/bootstrap',
+		'core': 'app/core.js'
 	},
 
-	/**
-	 * for libs that either do not support AMD out of the box, or
-	 * require some fine tuning to dependency mgt'
-	 */
 	shim: {
-	},
+		'bootstrap': {deps: ['jquery']}
+	}
+});
 
-	deps: [
-		// kick start application... see bootstrap.js
-		'./bootstrap'
-	]
+define(['jquery', 'bootstrap'], function($) {
+
+	$(document)
+		.ajaxStart(function(){
+			$("button:submit").addClass('disabled').attr("disabled", true);
+		})
+		.ajaxStop(function(){
+			$("button:submit").removeClass('disabled').attr("disabled", false);
+		});
+
+	$("form").submit(function(){
+		var self = $(this);
+		$.post(self.attr("action"), self.serialize(), success, "json");
+		return false;
+
+		function success(data){
+			if(data.status){
+				window.location.href = data.url;
+			} else {
+				self.find(".Validform_checktip").text(data.info);
+				//刷新验证码
+				$(".reloadverify").click();
+			}
+		}
+	});
+
+
+	return $.noConflict(true);
 });

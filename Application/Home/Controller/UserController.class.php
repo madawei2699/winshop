@@ -13,15 +13,8 @@ class UserController extends RestController {
 
 	}
 
-	// public function get() {
-		// $list = D('Goods')->get();
-		// print_r($list);
-		// $this->response($list, 'json');
-		// $this->display();
-	// }
-
 	/* 用户注册 */
-	public function register($username = '', $password = '', $repassword = '', $email = '', $verify = '') {
+	public function register($email = '', $password = '', $repassword = '', $username = '', $verify = '') {
 		if(is_login()) {
 			$this->redirect('User/Index/index');
 		}
@@ -37,11 +30,11 @@ class UserController extends RestController {
 			}
 
 			$user = D('User');
-			$uid = $user->register($username, $password, $email);
-			if($uid > 0){ //注册成功
+			$uid = $user->register($email, $password, $username);
+			if($uid > 0){
 				//TODO: 发送验证邮件
 				$this->success('注册成功！', U('Home/User/login'));
-			} else { //注册失败，显示错误信息
+			} else {
 				$this->error($this->showRegError($uid));
 			}
 		} else {
@@ -50,13 +43,13 @@ class UserController extends RestController {
 	}
 
 	/* 用户登录 */
-	public function login($username = '', $password = '') {
+	public function login($email = '', $password = '') {
 		if(is_login()) {
 			$this->redirect('User/Index/index');
 		}
 		if(IS_POST) {
 			$user = D('User');
-			$uid = $user->login($username, $password);
+			$uid = $user->login($email, $password);
 			if($uid > 0) {
 				//TODO:跳转到登录前页面
 				$this->success('登录成功！', U('User/Index/index'));

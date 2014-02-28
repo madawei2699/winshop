@@ -4,6 +4,7 @@ use Think\Model;
 use Think\Page;
 
 class UserModel extends Model {
+
 	//自动验证
 	/* 用户模型自动验证 */
 	protected $_validate = array(
@@ -29,17 +30,17 @@ class UserModel extends Model {
 	protected $_auto = array (
 		array('password', 'md5', self::MODEL_BOTH, 'function'),
 		array('repassword', 'md5', self::MODEL_BOTH, 'function'),
+		array('username', 'getUsername', self::MODEL_INSERT, 'callback'),
 		array('created', 'time', self::MODEL_INSERT, 'function'),
 		array('updated', 'time', self::MODEL_INSERT, 'function'),
-		array('createip', 'getip', self::MODEL_INSERT, 'callback'),
-		array('gid', 'getgid', self::MODEL_INSERT, 'callback'),
+		array('createip', 'getIp', self::MODEL_INSERT, 'callback'),
+		array('gid', 'getGid', self::MODEL_INSERT, 'callback'),
 	);
 
-	public function register($username, $password, $email){
+	public function register($email, $password){
 		$data = array(
-			'username' => $username,
+			'email' => $email,
 			'password' => $password,
-			'email' => $email
 		);
 
 		//TODO::验证手机
@@ -54,8 +55,8 @@ class UserModel extends Model {
 		}
 	}
 
-	public function login($username, $password){
-		$map['username'] = $username;
+	public function login($email, $password){
+		$map['email'] = $email;
 		/* 获取用户数据 */
 		$user = $this->where($map)->find();
 		if(is_array($user)) {
@@ -82,12 +83,16 @@ class UserModel extends Model {
 		session('user_auth_sign', null);
 	}
 
-	public function getip(){
+	public function getIp(){
 		return $_SERVER['REMOTE_ADDR'];
 	}
 
-	public function getgid(){
+	public function getGid(){
 		return 1;
+	}
+
+	public function getUsername(){
+		return I('post.username') ? I('post.username') : preg_replace('/@.*/', '', I('post.email'));
 	}
 
 	/**
@@ -107,7 +112,7 @@ class UserModel extends Model {
 		/* 记录登录SESSION和COOKIES */
 		$auth = array(
 			'uid' => $user['id'],
-			'username' => $user['username'],
+			'email' => $user['email'],
 		);
 		session('user_auth', $auth);
 		session('user_auth_sign', data_auth_sign($auth));

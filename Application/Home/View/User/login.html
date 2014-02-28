@@ -8,23 +8,25 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="well">
-					<form ng-submit="submit()" class="form-horizontal">
-						<legend>登录{{name}}</legend>
+					<form action="__SELF__" class="form-horizontal" method="post" role="form">
+						<legend>登录</legend>
 						<div class="form-group">
-							<label for="username" class="col-xs-2 col-sm-2 col-md-2 control-label">用户名<span class="maroon">*</span></label>
+							<label for="email" class="col-xs-2 col-sm-2 col-md-2 control-label">邮箱<span class="maroon">*</span></label>
 							<div class="col-xs-3 col-sm-3 col-md-3 controls" >
-								<input ng-model="user.username" type="text" name="username" class="form-control" placeholder="您的用户名">
+								<input type="text" name="email" class="form-control" placeholder="您的用户名">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-xs-2 col-sm-2 col-md-2 control-label" for="password">密码<span class="maroon">*</span></label>
 							<div class="col-xs-3 col-sm-3 col-md-3 controls">
-								<input ng-model="user.password" type="password" name="password" class="form-control" placeholder="请您输入密码">
+								<input type="password" name="password" class="form-control" placeholder="请您输入密码">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-xs-2 col-sm-2 col-md-2 control-label"></label>
-							<div class="controls Validform_checktip text-warning"></div>
+							<div class="col-xs-3 col-sm-3 col-md-3 controls">
+								<div class="Validform_checktip text-danger"></div>
+							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-xs-offset-2 col-md-offset-2 col-xs-4 col-md-4">
@@ -36,5 +38,4 @@
 		</div>
 	</div>
 </block>
-
 <block name="side"> </block>

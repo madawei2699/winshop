@@ -10,14 +10,14 @@
 					<form action="__SELF__" class="form-horizontal" method="post" role="form">
 						<legend>用户注册</legend>
 						<div class="form-group has-error">
-							<label for="username" class="col-xs-2 col-sm-2 col-md-2 control-label">用户名<span class="maroon">*</span></label>
-							<div class="col-xs-3 col-sm-3 col-md-3 controls" >
-								<input type="text" name="username" id="username" class="form-control" placeholder="您的用户名">
+							<label class="col-xs-2 col-sm-2 col-md-2 control-label" for="email">邮箱<span class="maroon">*</span></label>
+							<div class="col-xs-3 col-sm-3 col-md-3 controls">
+								<input type="text" name="email" id="email" class="form-control" placeholder="请填写您的邮箱">
 							</div>
-							<span class="help-block">长度为6-16位字符，可以为“数字、字母、中划线、下划线”组成</span>
+							<span class="help-block"></span>
 						</div>
 						<div class="form-group">
-							<label class="col-xs-2 col-sm-2 col-md-2 control-label" for="password">用户密码<span class="maroon">*</span></label>
+							<label class="col-xs-2 col-sm-2 col-md-2 control-label" for="password">密码<span class="maroon">*</span></label>
 							<div class="col-xs-3 col-sm-3 col-md-3 controls">
 								<input type="password" name="password" id="password" class="form-control" placeholder="请您输入密码">
 							</div>
@@ -30,16 +30,9 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-xs-2 col-sm-2 col-md-2 control-label" for="email">邮箱<span class="maroon">*</span></label>
+							<label class="col-xs-2 col-sm-2 col-md-2 control-label" for="username">用户名</label>
 							<div class="col-xs-3 col-sm-3 col-md-3 controls">
-								<input type="text" name="email" id="email" class="form-control" placeholder="请填写您的邮箱">
-							</div>
-							<span class="help-block">邮箱将与支付及优惠相关，请填写正确的邮箱</span>
-						</div>
-						<div class="form-group">
-							<label for="verify" class="col-xs-2 col-sm-2 col-md-2 control-label">微信验证码<span class="maroon">*</span></label>
-							<div class="col-xs-3 col-sm-3 col-md-3 controls" >
-								<input type="text" name="verify" class="form-control" placeholder="请您输入验证码">
+								<input type="text" name="username" id="username" class="form-control" placeholder="请填写您的用户名">
 							</div>
 						</div>
 						<div class="form-group">

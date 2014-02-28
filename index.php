@@ -21,7 +21,7 @@ define('APP_DEBUG', True);
 define('APP_PATH', './Application/');
 
 // 定义默认模板
-define('THEME_NAME', 'Default');
+// define('THEME_NAME', 'Default');
 
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';
