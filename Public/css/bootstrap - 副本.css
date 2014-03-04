@@ -1745,7 +1745,7 @@ textarea.input-lg {
 }
 .help-block {
   display: block;
-  margin-top: 5px;
+  margin-top: 7px;
   color: #737373;
 }
 @media (min-width: 768px) {
@@ -1838,7 +1838,7 @@ textarea.input-lg {
 }
 .btn:hover,
 .btn:focus {
-  color: #cccccc;
+  color: #aaaaaa;
   text-decoration: none;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -1861,7 +1861,7 @@ fieldset[disabled] .btn {
   box-shadow: none;
 }
 .btn-default {
-  color: #cccccc;
+  color: #aaaaaa;
   background-color: #eeeeee;
   border-color: #e1e1e1;
 }
@@ -1870,7 +1870,7 @@ fieldset[disabled] .btn {
 .btn-default:active,
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
-  color: #cccccc;
+  color: #aaaaaa;
   background-color: #dadada;
   border-color: #c3c3c3;
 }
@@ -2911,7 +2911,7 @@ input[type="button"].btn-block {
   }
 }
 .btn-default .caret {
-  border-top-color: #cccccc;
+  border-top-color: #aaaaaa;
 }
 .btn-primary .caret,
 .btn-success .caret,
@@ -2921,7 +2921,7 @@ input[type="button"].btn-block {
   border-top-color: #fff;
 }
 .dropup .btn-default .caret {
-  border-bottom-color: #cccccc;
+  border-bottom-color: #aaaaaa;
 }
 .dropup .btn-primary .caret,
 .dropup .btn-success .caret,
@@ -3710,6 +3710,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar-nav {
   margin: 6.25px -15px;
+  font-size: 16px;
 }
 .navbar-nav > li > a {
   padding-top: 10px;
@@ -3937,10 +3938,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
   color: #333333;
 }
 .navbar-inverse {
-  background-color: #1abc9c;
+  background-color: #f2f2f2;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 .navbar-inverse .navbar-brand {
-  color: #ffffff;
+  color: #999999;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
@@ -3951,18 +3953,18 @@ textarea.input-group-sm > .input-group-btn > .btn {
   color: #cccccc;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #ffffff;
+  color: #999999;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #ffffff;
+  color: #009a61;
   background-color: transparent;
 }
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
   color: #ffffff;
-  background-color: #148f77;
+  background-color: #009a61;
 }
 .navbar-inverse .navbar-nav > .disabled > a,
 .navbar-inverse .navbar-nav > .disabled > a:hover,
@@ -3982,21 +3984,21 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #169d82;
+  border-color: #e0e0e0;
 }
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #148f77;
+  background-color: #009a61;
   color: #ffffff;
 }
 .navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
-  border-top-color: #ffffff;
-  border-bottom-color: #ffffff;
+  border-top-color: #009a61;
+  border-bottom-color: #009a61;
 }
 .navbar-inverse .navbar-nav > .dropdown > a .caret {
-  border-top-color: #ffffff;
-  border-bottom-color: #ffffff;
+  border-top-color: #999999;
+  border-bottom-color: #999999;
 }
 .navbar-inverse .navbar-nav > .open > a .caret,
 .navbar-inverse .navbar-nav > .open > a:hover .caret,
@@ -4006,21 +4008,21 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 @media (max-width: 767px) {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
-    border-color: #148f77;
+    border-color: #d9d9d9;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
-    color: #ffffff;
+    color: #999999;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #ffffff;
+    color: #009a61;
     background-color: transparent;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #ffffff;
-    background-color: #148f77;
+    background-color: #009a61;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,
@@ -4030,10 +4032,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-inverse .navbar-link {
-  color: #ffffff;
+  color: #999999;
 }
 .navbar-inverse .navbar-link:hover {
-  color: #ffffff;
+  color: #009a61;
 }
 .breadcrumb {
   padding: 8px 15px;
@@ -4883,7 +4885,7 @@ a.list-group-item.active:focus .list-group-item-text {
   min-height: 20px;
   padding: 10px 20px 20px;
   margin-bottom: 20px;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 }
 .well blockquote {
   border-color: #ddd;
