@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="__STATIC__/uploadify/uploadify.css" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/js/uploadify/uploadify.css" />
 <div class="cols">
 	<div class="infolabel"><i class="must">*</i>附&#12288;&#12288;件</div>
 	<div class="item">
@@ -7,7 +7,7 @@
 		<input name="attachment[info]" type="hidden" value="{$attachment|default=''}">
 	</div>
 </div>
-<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/uploadify/jquery.uploadify.min.js"></script>
 <script type="text/javascript">
 (function($){
 	//上传URL
@@ -16,7 +16,7 @@
 	/* 初始化上传插件 */
 	$("#attachment").uploadify({
         "height"          : 30,
-        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+        "swf"             : "__STATIC__/js/uploadify/uploadify.swf",
         "fileObjName"     : "attachment",
         "uploader"        : url,
         "width"           : 120,

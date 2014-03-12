@@ -26,7 +26,7 @@
 					</tr>
 					<tr>
 						<th>官方QQ群</th>
-						<td><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=14ba57a5273cc820d298cc394227276b22177217e413dfe658aa3d3b34c119e0"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="OneThink技术交流" title="OneThink技术交流"></a></td>
+						<!-- <td><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=14ba57a5273cc820d298cc394227276b22177217e413dfe658aa3d3b34c119e0"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="OneThink技术交流" title="OneThink技术交流"></a></td> -->
 					</tr>
 					<tr>
 						<th>BUG反馈</th>

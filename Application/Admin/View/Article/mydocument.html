@@ -43,7 +43,7 @@
                 <div class="dropdown cf">
                 	<div class="row">
                 		<label>创建时间：</label>
-                		<input type="text" id="time-start" name="time-start" class="text input-2x" value="" placeholder="起始时间" /> -                		
+                		<input type="text" id="time-start" name="time-start" class="text input-2x" value="" placeholder="起始时间" /> -
                         <div class="input-append date" id="datetimepicker"  style="display:inline-block">
                             <input type="text" id="time-end" name="time-end" class="text input-2x" value="" placeholder="结束时间" />
                             <span class="add-on"><i class="icon-th"></i></span>
@@ -93,9 +93,9 @@
 		</tr>
 		</volist>
 	</tbody>
-    </table> 
+    </table>
 
-        
+
 	</div>
 
 	<!-- 分页 -->
@@ -106,11 +106,11 @@
 
 </block>
 <block name="script">
-<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
-<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
-<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<link href="__STATIC__/js/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/js/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/js/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/js/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script type="text/javascript">
 $(function(){
 	//搜索功能
@@ -166,7 +166,7 @@ $(function(){
         autoclose:true,
         pickerPosition:'bottom-left'
     })
-    
+
 })
 </script>
 </block>

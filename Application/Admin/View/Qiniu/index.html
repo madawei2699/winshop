@@ -130,8 +130,8 @@
 </block>
 
 <block name="script">
-	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
-	<script type="text/javascript" src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/uploadify/jquery.uploadify.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/thinkbox/jquery.thinkbox.js"></script>
 
 	<script id="hooktpl" type="text/tpl">
 		<form action="" method="post" class="form-horizontal hooktpl" id="rename_form">
@@ -256,7 +256,7 @@
 			/* 初始化上传插件 */
 			$("#upload-file").uploadify({
 				"height"          : 30,
-				"swf"             : "__STATIC__/uploadify/uploadify.swf",
+				"swf"             : "__STATIC__/js/uploadify/uploadify.swf",
 				"fileObjName"     : "qiniu_file",
 				"buttonText"      : "上传文件",
 				"uploader"        : "{:U('uploadOne',array('session_id'=>session_id(),'ajax'=>1))}",

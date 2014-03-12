@@ -1,7 +1,7 @@
 <extend name="Public/base" />
 
 <block name="body">
-	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/uploadify/jquery.uploadify.min.js"></script>
 	<div class="main-title cf">
 		<h2>插件配置 [ {$data.title} ]</h2>
 	</div>
@@ -86,7 +86,7 @@
 									/* 初始化上传插件 */
 									$("#upload_picture_{$o_key}").uploadify({
 										"height"          : 30,
-										"swf"             : "__STATIC__/uploadify/uploadify.swf",
+										"swf"             : "__STATIC__/js/uploadify/uploadify.swf",
 										"fileObjName"     : "download",
 										"buttonText"      : "上传图片",
 										"uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
@@ -207,7 +207,7 @@
 														/* 初始化上传插件 */
 														$("#upload_picture_{$o_tab_key}").uploadify({
 															"height"          : 30,
-															"swf"             : "__STATIC__/uploadify/uploadify.swf",
+															"swf"             : "__STATIC__/js/uploadify/uploadify.swf",
 															"fileObjName"     : "download",
 															"buttonText"      : "上传图片",
 															"uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",

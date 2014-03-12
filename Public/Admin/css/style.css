@@ -58,6 +58,15 @@ body{
     background-color: #86db00;
 }
 
+.header .main-sub {
+    float: right;
+    margin-right: 40px;
+    color: #fff;
+}
+.header .main-sub a {
+    color: #fff;
+}
+
 /* 用户 */
 .header .user-bar {
     position: relative;
