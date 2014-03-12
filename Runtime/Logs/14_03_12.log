@@ -1,0 +1,24 @@
+[ 2014-03-12T09:59:36+08:00 ] 127.0.0.1 /winshop/index.php?s=/admin/config/group.html
+ERR: 1146:Table 'winshop.winshop_menu' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `winshop_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc 
+ERR: 1146:Table 'winshop.winshop_menu' doesn't exist
+ [ SQL语句 ] : SELECT `id` FROM `winshop_menu` WHERE ( url like '%Config/group%' ) LIMIT 1  
+ERR: 1146:Table 'winshop.winshop_config' doesn't exist
+ [ SQL语句 ] : SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `winshop_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort 
+
+[ 2014-03-12T09:59:37+08:00 ] 127.0.0.1 /winshop/index.php?s=/admin/config/group.html
+ERR: 1146:Table 'winshop.winshop_menu' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `winshop_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc 
+ERR: 1146:Table 'winshop.winshop_menu' doesn't exist
+ [ SQL语句 ] : SELECT `id` FROM `winshop_menu` WHERE ( url like '%Config/group%' ) LIMIT 1  
+ERR: 1146:Table 'winshop.winshop_config' doesn't exist
+ [ SQL语句 ] : SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `winshop_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort 
+
+[ 2014-03-12T09:59:38+08:00 ] 127.0.0.1 /winshop/index.php?s=/admin/config/group.html
+ERR: 1146:Table 'winshop.winshop_menu' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `winshop_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc 
+ERR: 1146:Table 'winshop.winshop_menu' doesn't exist
+ [ SQL语句 ] : SELECT `id` FROM `winshop_menu` WHERE ( url like '%Config/group%' ) LIMIT 1  
+ERR: 1146:Table 'winshop.winshop_config' doesn't exist
+ [ SQL语句 ] : SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `winshop_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort 
+
