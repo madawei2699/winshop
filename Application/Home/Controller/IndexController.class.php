@@ -1,27 +1,33 @@
 <?php
-// 本类由系统自动生成，仅供测试用途
+// +----------------------------------------------------------------------
+// | OneThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2013 http://www.onethink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
+// +----------------------------------------------------------------------
+
 namespace Home\Controller;
-use Think\Controller\RestController;
-class IndexController extends RestController {
+use OT\DataDictionary;
 
-	public function index() {
-		// echo "index";
-		$this->display();
-		// $list = D('Goods')->get();
-		// $this->response($list, 'json');
-	}
+/**
+ * 前台首页控制器
+ * 主要获取首页聚合数据
+ */
+class IndexController extends HomeController {
 
-	public function get() {
-		$list = D('Goods')->get();
-		// print_r($list);
-		$this->response($list, 'json');
-		// $this->display();
-	}
+	//系统首页
+    public function index(){
 
+        $category = D('Category')->getTree();
+        $lists    = D('Document')->lists(null);
 
-	public function read_json() {
+        $this->assign('category',$category);//栏目
+        $this->assign('lists',$lists);//列表
+        $this->assign('page',D('Document')->page);//分页
 
-		echo "string";
-		// $this->display();
-	}
+                 
+        $this->display();
+    }
+
 }
