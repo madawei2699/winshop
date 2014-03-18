@@ -50,6 +50,6 @@ class FileController extends HomeController {
 		if(!$logic->download($id)){
 			$this->error($logic->getError());
 		}
-		
+
 	}
 }

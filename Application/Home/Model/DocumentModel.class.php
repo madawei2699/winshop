@@ -44,7 +44,7 @@ class DocumentModel extends Model{
 		array('status', 'getStatus', self::MODEL_BOTH, 'callback'),
 	);
 
-    public $page = '';
+		public $page = '';
 
 	/**
 	 * 获取文档列表
@@ -244,34 +244,34 @@ class DocumentModel extends Model{
 	}
 
 	/**
-     * 获取数据状态
-     * @return integer 数据状态
-     * @author huajie <banhuajie@163.com>
-     */
-    protected function getStatus(){
-        $cate = I('post.category_id');
-        $check = M('Category')->getFieldById($cate, 'check');
-        if($check){
-            $status = 2;
-        }else{
-        	$status = 1;
-        }
-        return $status;
-    }
+		 * 获取数据状态
+		 * @return integer 数据状态
+		 * @author huajie <banhuajie@163.com>
+		 */
+		protected function getStatus(){
+				$cate = I('post.category_id');
+				$check = M('Category')->getFieldById($cate, 'check');
+				if($check){
+						$status = 2;
+				}else{
+					$status = 1;
+				}
+				return $status;
+		}
 
-    /**
-     * 获取根节点id
-     * @return integer 数据id
-     * @author huajie <banhuajie@163.com>
-     */
-    protected function getRoot(){
-    	$pid = I('post.pid');
-    	if($pid == 0){
-    		return 0;
-    	}
-    	$p_root = $this->getFieldById($pid, 'root');
-    	return $p_root == 0 ? $pid : $p_root;
-    }
+		/**
+		 * 获取根节点id
+		 * @return integer 数据id
+		 * @author huajie <banhuajie@163.com>
+		 */
+		protected function getRoot(){
+			$pid = I('post.pid');
+			if($pid == 0){
+				return 0;
+			}
+			$p_root = $this->getFieldById($pid, 'root');
+			return $p_root == 0 ? $pid : $p_root;
+		}
 
 	/**
 	 * 验证分类是否允许发布内容

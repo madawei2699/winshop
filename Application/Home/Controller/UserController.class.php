@@ -18,14 +18,14 @@ class UserController extends HomeController {
 
 	/* 用户中心首页 */
 	public function index(){
-		
+
 	}
 
 	/* 注册页面 */
 	public function register($username = '', $password = '', $repassword = '', $email = '', $verify = ''){
-        if(!C('USER_ALLOW_REGISTER')){
-            $this->error('注册已关闭');
-        }
+		if(!C('USER_ALLOW_REGISTER')){
+			$this->error('注册已关闭');
+		}
 		if(IS_POST){ //注册用户
 			/* 检测验证码 */
 			if(!check_verify($verify)){
@@ -35,10 +35,10 @@ class UserController extends HomeController {
 			/* 检测密码 */
 			if($password != $repassword){
 				$this->error('密码和重复密码不一致！');
-			}			
+			}
 
 			/* 调用注册接口注册用户 */
-            $User = new UserApi;
+			$User = new UserApi;
 			$uid = $User->register($username, $password, $email);
 			if(0 < $uid){ //注册成功
 				//TODO: 发送验证邮件
@@ -127,38 +127,38 @@ class UserController extends HomeController {
 	}
 
 
-    /**
-     * 修改密码提交
-     * @author huajie <banhuajie@163.com>
-     */
-    public function profile(){
+	/**
+	 * 修改密码提交
+	 * @author huajie <banhuajie@163.com>
+	 */
+	public function profile(){
 		if ( !is_login() ) {
 			$this->error( '您还没有登陆',U('User/login') );
 		}
-        if ( IS_POST ) {
-            //获取参数
-            $uid        =   is_login();
-            $password   =   I('post.old');
-            $repassword = I('post.repassword');
-            $data['password'] = I('post.password');
-            empty($password) && $this->error('请输入原密码');
-            empty($data['password']) && $this->error('请输入新密码');
-            empty($repassword) && $this->error('请输入确认密码');
+		if ( IS_POST ) {
+			//获取参数
+			$uid        =   is_login();
+			$password   =   I('post.old');
+			$repassword = I('post.repassword');
+			$data['password'] = I('post.password');
+			empty($password) && $this->error('请输入原密码');
+			empty($data['password']) && $this->error('请输入新密码');
+			empty($repassword) && $this->error('请输入确认密码');
 
-            if($data['password'] !== $repassword){
-                $this->error('您输入的新密码与确认密码不一致');
-            }
+			if($data['password'] !== $repassword){
+				$this->error('您输入的新密码与确认密码不一致');
+			}
 
-            $Api = new UserApi();
-            $res = $Api->updateInfo($uid, $password, $data);
-            if($res['status']){
-                $this->success('修改密码成功！');
-            }else{
-                $this->error($res['info']);
-            }
-        }else{
-            $this->display();
-        }
-    }
+			$Api = new UserApi();
+			$res = $Api->updateInfo($uid, $password, $data);
+			if($res['status']){
+				$this->success('修改密码成功！');
+			}else{
+				$this->error($res['info']);
+			}
+		}else{
+			$this->display();
+		}
+	}
 
 }

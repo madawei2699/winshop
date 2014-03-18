@@ -22,12 +22,12 @@ const ONETHINK_ADDON_PATH = './Addons/';
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function is_login(){
-    $user = session('user_auth');
-    if (empty($user)) {
-        return 0;
-    } else {
-        return session('user_auth_sign') == data_auth_sign($user) ? $user['uid'] : 0;
-    }
+	$user = session('user_auth');
+	if (empty($user)) {
+		return 0;
+	} else {
+		return session('user_auth_sign') == data_auth_sign($user) ? $user['uid'] : 0;
+	}
 }
 
 /**
@@ -36,8 +36,8 @@ function is_login(){
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function is_administrator($uid = null){
-    $uid = is_null($uid) ? is_login() : $uid;
-    return $uid && (intval($uid) === C('USER_ADMINISTRATOR'));
+	$uid = is_null($uid) ? is_login() : $uid;
+	return $uid && (intval($uid) === C('USER_ADMINISTRATOR'));
 }
 
 /**
@@ -48,7 +48,7 @@ function is_administrator($uid = null){
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function str2arr($str, $glue = ','){
-    return explode($glue, $str);
+	return explode($glue, $str);
 }
 
 /**
@@ -59,7 +59,7 @@ function str2arr($str, $glue = ','){
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function arr2str($arr, $glue = ','){
-    return implode($glue, $arr);
+	return implode($glue, $arr);
 }
 
 /**
@@ -74,22 +74,22 @@ function arr2str($arr, $glue = ','){
  * @return string
  */
 function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
-    if(function_exists("mb_substr"))
-        $slice = mb_substr($str, $start, $length, $charset);
-    elseif(function_exists('iconv_substr')) {
-        $slice = iconv_substr($str,$start,$length,$charset);
-        if(false === $slice) {
-            $slice = '';
-        }
-    }else{
-        $re['utf-8']   = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/";
-        $re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/";
-        $re['gbk']    = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/";
-        $re['big5']   = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/";
-        preg_match_all($re[$charset], $str, $match);
-        $slice = join("",array_slice($match[0], $start, $length));
-    }
-    return $suffix ? $slice.'...' : $slice;
+	if(function_exists("mb_substr"))
+		$slice = mb_substr($str, $start, $length, $charset);
+	elseif(function_exists('iconv_substr')) {
+		$slice = iconv_substr($str,$start,$length,$charset);
+		if(false === $slice) {
+			$slice = '';
+		}
+	}else{
+		$re['utf-8']   = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/";
+		$re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/";
+		$re['gbk']    = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/";
+		$re['big5']   = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/";
+		preg_match_all($re[$charset], $str, $match);
+		$slice = join("",array_slice($match[0], $start, $length));
+	}
+	return $suffix ? $slice.'...' : $slice;
 }
 
 /**
@@ -101,25 +101,25 @@ function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function think_encrypt($data, $key = '', $expire = 0) {
-    $key  = md5(empty($key) ? C('DATA_AUTH_KEY') : $key);
-    $data = base64_encode($data);
-    $x    = 0;
-    $len  = strlen($data);
-    $l    = strlen($key);
-    $char = '';
+	$key  = md5(empty($key) ? C('DATA_AUTH_KEY') : $key);
+	$data = base64_encode($data);
+	$x    = 0;
+	$len  = strlen($data);
+	$l    = strlen($key);
+	$char = '';
 
-    for ($i = 0; $i < $len; $i++) {
-        if ($x == $l) $x = 0;
-        $char .= substr($key, $x, 1);
-        $x++;
-    }
+	for ($i = 0; $i < $len; $i++) {
+		if ($x == $l) $x = 0;
+		$char .= substr($key, $x, 1);
+		$x++;
+	}
 
-    $str = sprintf('%010d', $expire ? $expire + time():0);
+	$str = sprintf('%010d', $expire ? $expire + time():0);
 
-    for ($i = 0; $i < $len; $i++) {
-        $str .= chr(ord(substr($data, $i, 1)) + (ord(substr($char, $i, 1)))%256);
-    }
-    return str_replace(array('+','/','='),array('-','_',''),base64_encode($str));
+	for ($i = 0; $i < $len; $i++) {
+		$str .= chr(ord(substr($data, $i, 1)) + (ord(substr($char, $i, 1)))%256);
+	}
+	return str_replace(array('+','/','='),array('-','_',''),base64_encode($str));
 }
 
 /**
@@ -130,38 +130,38 @@ function think_encrypt($data, $key = '', $expire = 0) {
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function think_decrypt($data, $key = ''){
-    $key    = md5(empty($key) ? C('DATA_AUTH_KEY') : $key);
-    $data   = str_replace(array('-','_'),array('+','/'),$data);
-    $mod4   = strlen($data) % 4;
-    if ($mod4) {
-       $data .= substr('====', $mod4);
-    }
-    $data   = base64_decode($data);
-    $expire = substr($data,0,10);
-    $data   = substr($data,10);
+	$key    = md5(empty($key) ? C('DATA_AUTH_KEY') : $key);
+	$data   = str_replace(array('-','_'),array('+','/'),$data);
+	$mod4   = strlen($data) % 4;
+	if ($mod4) {
+		 $data .= substr('====', $mod4);
+	}
+	$data   = base64_decode($data);
+	$expire = substr($data,0,10);
+	$data   = substr($data,10);
 
-    if($expire > 0 && $expire < time()) {
-        return '';
-    }
-    $x      = 0;
-    $len    = strlen($data);
-    $l      = strlen($key);
-    $char   = $str = '';
+	if($expire > 0 && $expire < time()) {
+		return '';
+	}
+	$x      = 0;
+	$len    = strlen($data);
+	$l      = strlen($key);
+	$char   = $str = '';
 
-    for ($i = 0; $i < $len; $i++) {
-        if ($x == $l) $x = 0;
-        $char .= substr($key, $x, 1);
-        $x++;
-    }
+	for ($i = 0; $i < $len; $i++) {
+		if ($x == $l) $x = 0;
+		$char .= substr($key, $x, 1);
+		$x++;
+	}
 
-    for ($i = 0; $i < $len; $i++) {
-        if (ord(substr($data, $i, 1))<ord(substr($char, $i, 1))) {
-            $str .= chr((ord(substr($data, $i, 1)) + 256) - ord(substr($char, $i, 1)));
-        }else{
-            $str .= chr(ord(substr($data, $i, 1)) - ord(substr($char, $i, 1)));
-        }
-    }
-    return base64_decode($str);
+	for ($i = 0; $i < $len; $i++) {
+		if (ord(substr($data, $i, 1))<ord(substr($char, $i, 1))) {
+			$str .= chr((ord(substr($data, $i, 1)) + 256) - ord(substr($char, $i, 1)));
+		}else{
+			$str .= chr(ord(substr($data, $i, 1)) - ord(substr($char, $i, 1)));
+		}
+	}
+	return base64_decode($str);
 }
 
 /**
@@ -171,14 +171,14 @@ function think_decrypt($data, $key = ''){
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function data_auth_sign($data) {
-    //数据类型检测
-    if(!is_array($data)){
-        $data = (array)$data;
-    }
-    ksort($data); //排序
-    $code = http_build_query($data); //url编码并生成query字符串
-    $sign = sha1($code); //生成签名
-    return $sign;
+	//数据类型检测
+	if(!is_array($data)){
+		$data = (array)$data;
+	}
+	ksort($data); //排序
+	$code = http_build_query($data); //url编码并生成query字符串
+	$sign = sha1($code); //生成签名
+	return $sign;
 }
 
 /**
@@ -191,26 +191,26 @@ function data_auth_sign($data) {
 * @return array
 */
 function list_sort_by($list,$field, $sortby='asc') {
-   if(is_array($list)){
-       $refer = $resultSet = array();
-       foreach ($list as $i => $data)
-           $refer[$i] = &$data[$field];
-       switch ($sortby) {
-           case 'asc': // 正向排序
-                asort($refer);
-                break;
-           case 'desc':// 逆向排序
-                arsort($refer);
-                break;
-           case 'nat': // 自然排序
-                natcasesort($refer);
-                break;
-       }
-       foreach ( $refer as $key=> $val)
-           $resultSet[] = &$list[$key];
-       return $resultSet;
-   }
-   return false;
+	 if(is_array($list)){
+		 $refer = $resultSet = array();
+		 foreach ($list as $i => $data)
+			 $refer[$i] = &$data[$field];
+		 switch ($sortby) {
+			 case 'asc': // 正向排序
+				asort($refer);
+				break;
+			 case 'desc':// 逆向排序
+				arsort($refer);
+				break;
+			 case 'nat': // 自然排序
+				natcasesort($refer);
+				break;
+		 }
+		 foreach ( $refer as $key=> $val)
+			 $resultSet[] = &$list[$key];
+		 return $resultSet;
+	 }
+	 return false;
 }
 
 /**
@@ -222,28 +222,28 @@ function list_sort_by($list,$field, $sortby='asc') {
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function list_to_tree($list, $pk='id', $pid = 'pid', $child = '_child', $root = 0) {
-    // 创建Tree
-    $tree = array();
-    if(is_array($list)) {
-        // 创建基于主键的数组引用
-        $refer = array();
-        foreach ($list as $key => $data) {
-            $refer[$data[$pk]] =& $list[$key];
-        }
-        foreach ($list as $key => $data) {
-            // 判断是否存在parent
-            $parentId =  $data[$pid];
-            if ($root == $parentId) {
-                $tree[] =& $list[$key];
-            }else{
-                if (isset($refer[$parentId])) {
-                    $parent =& $refer[$parentId];
-                    $parent[$child][] =& $list[$key];
-                }
-            }
-        }
-    }
-    return $tree;
+	// 创建Tree
+	$tree = array();
+	if(is_array($list)) {
+		// 创建基于主键的数组引用
+		$refer = array();
+		foreach ($list as $key => $data) {
+			$refer[$data[$pk]] =& $list[$key];
+		}
+		foreach ($list as $key => $data) {
+			// 判断是否存在parent
+			$parentId =  $data[$pid];
+			if ($root == $parentId) {
+				$tree[] =& $list[$key];
+			}else{
+				if (isset($refer[$parentId])) {
+					$parent =& $refer[$parentId];
+					$parent[$child][] =& $list[$key];
+				}
+			}
+		}
+	}
+	return $tree;
 }
 
 /**
@@ -256,19 +256,19 @@ function list_to_tree($list, $pk='id', $pid = 'pid', $child = '_child', $root = 
  * @author yangweijie <yangweijiester@gmail.com>
  */
 function tree_to_list($tree, $child = '_child', $order='id', &$list = array()){
-    if(is_array($tree)) {
-        $refer = array();
-        foreach ($tree as $key => $value) {
-            $reffer = $value;
-            if(isset($reffer[$child])){
-                unset($reffer[$child]);
-                tree_to_list($value[$child], $child, $order, $list);
-            }
-            $list[] = $reffer;
-        }
-        $list = list_sort_by($list, $order, $sortby='asc');
-    }
-    return $list;
+	if(is_array($tree)) {
+		$refer = array();
+		foreach ($tree as $key => $value) {
+			$reffer = $value;
+			if(isset($reffer[$child])){
+				unset($reffer[$child]);
+				tree_to_list($value[$child], $child, $order, $list);
+			}
+			$list[] = $reffer;
+		}
+		$list = list_sort_by($list, $order, $sortby='asc');
+	}
+	return $list;
 }
 
 /**
@@ -279,9 +279,9 @@ function tree_to_list($tree, $child = '_child', $order='id', &$list = array()){
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function format_bytes($size, $delimiter = '') {
-    $units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
-    for ($i = 0; $size >= 1024 && $i < 5; $i++) $size /= 1024;
-    return round($size, 2) . $delimiter . $units[$i];
+	$units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
+	for ($i = 0; $size >= 1024 && $i < 5; $i++) $size /= 1024;
+	return round($size, 2) . $delimiter . $units[$i];
 }
 
 /**
@@ -290,7 +290,7 @@ function format_bytes($size, $delimiter = '') {
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function set_redirect_url($url){
-    cookie('redirect_url', $url);
+	cookie('redirect_url', $url);
 }
 
 /**
@@ -299,8 +299,8 @@ function set_redirect_url($url){
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function get_redirect_url(){
-    $url = cookie('redirect_url');
-    return empty($url) ? __APP__ : $url;
+	$url = cookie('redirect_url');
+	return empty($url) ? __APP__ : $url;
 }
 
 /**
@@ -310,7 +310,7 @@ function get_redirect_url(){
  * @return void
  */
 function hook($hook,$params=array()){
-    \Think\Hook::listen($hook,$params);
+	\Think\Hook::listen($hook,$params);
 }
 
 /**
@@ -318,8 +318,8 @@ function hook($hook,$params=array()){
  * @param strng $name 插件名
  */
 function get_addon_class($name){
-    $class = "Addons\\{$name}\\{$name}Addon";
-    return $class;
+	$class = "Addons\\{$name}\\{$name}Addon";
+	return $class;
 }
 
 /**
@@ -327,13 +327,13 @@ function get_addon_class($name){
  * @param string $name 插件名
  */
 function get_addon_config($name){
-    $class = get_addon_class($name);
-    if(class_exists($class)) {
-        $addon = new $class();
-        return $addon->getConfig();
-    }else {
-        return array();
-    }
+	$class = get_addon_class($name);
+	if(class_exists($class)) {
+		$addon = new $class();
+		return $addon->getConfig();
+	}else {
+		return array();
+	}
 }
 
 /**
@@ -343,27 +343,27 @@ function get_addon_config($name){
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function addons_url($url, $param = array()){
-    $url        = parse_url($url);
-    $case       = C('URL_CASE_INSENSITIVE');
-    $addons     = $case ? parse_name($url['scheme']) : $url['scheme'];
-    $controller = $case ? parse_name($url['host']) : $url['host'];
-    $action     = trim($case ? strtolower($url['path']) : $url['path'], '/');
+	$url        = parse_url($url);
+	$case       = C('URL_CASE_INSENSITIVE');
+	$addons     = $case ? parse_name($url['scheme']) : $url['scheme'];
+	$controller = $case ? parse_name($url['host']) : $url['host'];
+	$action     = trim($case ? strtolower($url['path']) : $url['path'], '/');
 
-    /* 解析URL带的参数 */
-    if(isset($url['query'])){
-        parse_str($url['query'], $query);
-        $param = array_merge($query, $param);
-    }
+	/* 解析URL带的参数 */
+	if(isset($url['query'])){
+		parse_str($url['query'], $query);
+		$param = array_merge($query, $param);
+	}
 
-    /* 基础参数 */
-    $params = array(
-        '_addons'     => $addons,
-        '_controller' => $controller,
-        '_action'     => $action,
-    );
-    $params = array_merge($params, $param); //添加额外参数
+	/* 基础参数 */
+	$params = array(
+		'_addons'     => $addons,
+		'_controller' => $controller,
+		'_action'     => $action,
+	);
+	$params = array_merge($params, $param); //添加额外参数
 
-    return U('Addons/execute', $params);
+	return U('Addons/execute', $params);
 }
 
 /**
@@ -373,8 +373,8 @@ function addons_url($url, $param = array()){
  * @author huajie <banhuajie@163.com>
  */
 function time_format($time = NULL,$format='Y-m-d H:i'){
-    $time = $time === NULL ? NOW_TIME : intval($time);
-    return date($format, $time);
+	$time = $time === NULL ? NOW_TIME : intval($time);
+	return date($format, $time);
 }
 
 /**
@@ -383,37 +383,37 @@ function time_format($time = NULL,$format='Y-m-d H:i'){
  * @return string       用户名
  */
 function get_username($uid = 0){
-    static $list;
-    if(!($uid && is_numeric($uid))){ //获取当前登录用户名
-        return session('user_auth.username');
-    }
+	static $list;
+	if(!($uid && is_numeric($uid))){ //获取当前登录用户名
+		return session('user_auth.username');
+	}
 
-    /* 获取缓存数据 */
-    if(empty($list)){
-        $list = S('sys_active_user_list');
-    }
+	/* 获取缓存数据 */
+	if(empty($list)){
+		$list = S('sys_active_user_list');
+	}
 
-    /* 查找用户信息 */
-    $key = "u{$uid}";
-    if(isset($list[$key])){ //已缓存，直接使用
-        $name = $list[$key];
-    } else { //调用接口获取用户信息
-        $User = new User\Api\UserApi();
-        $info = $User->info($uid);
-        if($info && isset($info[1])){
-            $name = $list[$key] = $info[1];
-            /* 缓存用户 */
-            $count = count($list);
-            $max   = C('USER_MAX_CACHE');
-            while ($count-- > $max) {
-                array_shift($list);
-            }
-            S('sys_active_user_list', $list);
-        } else {
-            $name = '';
-        }
-    }
-    return $name;
+	/* 查找用户信息 */
+	$key = "u{$uid}";
+	if(isset($list[$key])){ //已缓存，直接使用
+		$name = $list[$key];
+	} else { //调用接口获取用户信息
+		$User = new User\Api\UserApi();
+		$info = $User->info($uid);
+		if($info && isset($info[1])){
+			$name = $list[$key] = $info[1];
+			/* 缓存用户 */
+			$count = count($list);
+			$max   = C('USER_MAX_CACHE');
+			while ($count-- > $max) {
+				array_shift($list);
+			}
+			S('sys_active_user_list', $list);
+		} else {
+			$name = '';
+		}
+	}
+	return $name;
 }
 
 /**
@@ -422,37 +422,37 @@ function get_username($uid = 0){
  * @return string       用户昵称
  */
 function get_nickname($uid = 0){
-    static $list;
-    if(!($uid && is_numeric($uid))){ //获取当前登录用户名
-        return session('user_auth.username');
-    }
+	static $list;
+	if(!($uid && is_numeric($uid))){ //获取当前登录用户名
+		return session('user_auth.username');
+	}
 
-    /* 获取缓存数据 */
-    if(empty($list)){
-        $list = S('sys_user_nickname_list');
-    }
+	/* 获取缓存数据 */
+	if(empty($list)){
+		$list = S('sys_user_nickname_list');
+	}
 
-    /* 查找用户信息 */
-    $key = "u{$uid}";
-    if(isset($list[$key])){ //已缓存，直接使用
-        $name = $list[$key];
-    } else { //调用接口获取用户信息
-        $info = M('Member')->field('nickname')->find($uid);
-        if($info !== false && $info['nickname'] ){
-            $nickname = $info['nickname'];
-            $name = $list[$key] = $nickname;
-            /* 缓存用户 */
-            $count = count($list);
-            $max   = C('USER_MAX_CACHE');
-            while ($count-- > $max) {
-                array_shift($list);
-            }
-            S('sys_user_nickname_list', $list);
-        } else {
-            $name = '';
-        }
-    }
-    return $name;
+	/* 查找用户信息 */
+	$key = "u{$uid}";
+	if(isset($list[$key])){ //已缓存，直接使用
+		$name = $list[$key];
+	} else { //调用接口获取用户信息
+		$info = M('Member')->field('nickname')->find($uid);
+		if($info !== false && $info['nickname'] ){
+			$nickname = $info['nickname'];
+			$name = $list[$key] = $nickname;
+			/* 缓存用户 */
+			$count = count($list);
+			$max   = C('USER_MAX_CACHE');
+			while ($count-- > $max) {
+				array_shift($list);
+			}
+			S('sys_user_nickname_list', $list);
+		} else {
+			$name = '';
+		}
+	}
+	return $name;
 }
 
 /**
@@ -462,38 +462,38 @@ function get_nickname($uid = 0){
  * @return string         分类信息
  */
 function get_category($id, $field = null){
-    static $list;
+	static $list;
 
-    /* 非法分类ID */
-    if(empty($id) || !is_numeric($id)){
-        return '';
-    }
+	/* 非法分类ID */
+	if(empty($id) || !is_numeric($id)){
+		return '';
+	}
 
-    /* 读取缓存数据 */
-    if(empty($list)){
-        $list = S('sys_category_list');
-    }
+	/* 读取缓存数据 */
+	if(empty($list)){
+		$list = S('sys_category_list');
+	}
 
-    /* 获取分类名称 */
-    if(!isset($list[$id])){
-        $cate = M('Category')->find($id);
-        if(!$cate || 1 != $cate['status']){ //不存在分类，或分类被禁用
-            return '';
-        }
-        $list[$id] = $cate;
-        S('sys_category_list', $list); //更新缓存
-    }
-    return is_null($field) ? $list[$id] : $list[$id][$field];
+	/* 获取分类名称 */
+	if(!isset($list[$id])){
+		$cate = M('Category')->find($id);
+		if(!$cate || 1 != $cate['status']){ //不存在分类，或分类被禁用
+			return '';
+		}
+		$list[$id] = $cate;
+		S('sys_category_list', $list); //更新缓存
+	}
+	return is_null($field) ? $list[$id] : $list[$id][$field];
 }
 
 /* 根据ID获取分类标识 */
 function get_category_name($id){
-    return get_category($id, 'name');
+	return get_category($id, 'name');
 }
 
 /* 根据ID获取分类名称 */
 function get_category_title($id){
-    return get_category($id, 'title');
+	return get_category($id, 'title');
 }
 
 /**
@@ -503,36 +503,36 @@ function get_category_title($id){
  * @return array
  */
 function get_document_model($id = null, $field = null){
-    static $list;
+	static $list;
 
-    /* 非法分类ID */
-    if(!(is_numeric($id) || is_null($id))){
-        return '';
-    }
+	/* 非法分类ID */
+	if(!(is_numeric($id) || is_null($id))){
+		return '';
+	}
 
-    /* 读取缓存数据 */
-    if(empty($list)){
-        $list = S('DOCUMENT_MODEL_LIST');
-    }
+	/* 读取缓存数据 */
+	if(empty($list)){
+		$list = S('DOCUMENT_MODEL_LIST');
+	}
 
-    /* 获取模型名称 */
-    if(empty($list)){
-        $map   = array('status' => 1, 'extend' => 1);
-        $model = M('Model')->where($map)->field(true)->select();
-        foreach ($model as $value) {
-            $list[$value['id']] = $value;
-        }
-        S('DOCUMENT_MODEL_LIST', $list); //更新缓存
-    }
+	/* 获取模型名称 */
+	if(empty($list)){
+		$map   = array('status' => 1, 'extend' => 1);
+		$model = M('Model')->where($map)->field(true)->select();
+		foreach ($model as $value) {
+			$list[$value['id']] = $value;
+		}
+		S('DOCUMENT_MODEL_LIST', $list); //更新缓存
+	}
 
-    /* 根据条件返回数据 */
-    if(is_null($id)){
-        return $list;
-    } elseif(is_null($field)){
-        return $list[$id];
-    } else {
-        return $list[$id][$field];
-    }
+	/* 根据条件返回数据 */
+	if(is_null($id)){
+		return $list;
+	} elseif(is_null($field)){
+		return $list[$id];
+	} else {
+		return $list[$id][$field];
+	}
 }
 
 /**
@@ -542,8 +542,8 @@ function get_document_model($id = null, $field = null){
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function ubb($data){
-    //TODO: 待完善，目前返回原始数据
-    return $data;
+	//TODO: 待完善，目前返回原始数据
+	return $data;
 }
 
 /**
@@ -557,62 +557,62 @@ function ubb($data){
  */
 function action_log($action = null, $model = null, $record_id = null, $user_id = null){
 
-    //参数检查
-    if(empty($action) || empty($model) || empty($record_id)){
-        return '参数不能为空';
-    }
-    if(empty($user_id)){
-        $user_id = is_login();
-    }
+	//参数检查
+	if(empty($action) || empty($model) || empty($record_id)){
+		return '参数不能为空';
+	}
+	if(empty($user_id)){
+		$user_id = is_login();
+	}
 
-    //查询行为,判断是否执行
-    $action_info = M('Action')->getByName($action);
-    if($action_info['status'] != 1){
-        return '该行为被禁用或删除';
-    }
+	//查询行为,判断是否执行
+	$action_info = M('Action')->getByName($action);
+	if($action_info['status'] != 1){
+		return '该行为被禁用或删除';
+	}
 
-    //插入行为日志
-    $data['action_id']      =   $action_info['id'];
-    $data['user_id']        =   $user_id;
-    $data['action_ip']      =   ip2long(get_client_ip());
-    $data['model']          =   $model;
-    $data['record_id']      =   $record_id;
-    $data['create_time']    =   NOW_TIME;
+	//插入行为日志
+	$data['action_id']      =   $action_info['id'];
+	$data['user_id']        =   $user_id;
+	$data['action_ip']      =   ip2long(get_client_ip());
+	$data['model']          =   $model;
+	$data['record_id']      =   $record_id;
+	$data['create_time']    =   NOW_TIME;
 
-    //解析日志规则,生成日志备注
-    if(!empty($action_info['log'])){
-        if(preg_match_all('/\[(\S+?)\]/', $action_info['log'], $match)){
-            $log['user']    =   $user_id;
-            $log['record']  =   $record_id;
-            $log['model']   =   $model;
-            $log['time']    =   NOW_TIME;
-            $log['data']    =   array('user'=>$user_id,'model'=>$model,'record'=>$record_id,'time'=>NOW_TIME);
-            foreach ($match[1] as $value){
-                $param = explode('|', $value);
-                if(isset($param[1])){
-                    $replace[] = call_user_func($param[1],$log[$param[0]]);
-                }else{
-                    $replace[] = $log[$param[0]];
-                }
-            }
-            $data['remark'] =   str_replace($match[0], $replace, $action_info['log']);
-        }else{
-            $data['remark'] =   $action_info['log'];
-        }
-    }else{
-        //未定义日志规则，记录操作url
-        $data['remark']     =   '操作url：'.$_SERVER['REQUEST_URI'];
-    }
+	//解析日志规则,生成日志备注
+	if(!empty($action_info['log'])){
+		if(preg_match_all('/\[(\S+?)\]/', $action_info['log'], $match)){
+			$log['user']    =   $user_id;
+			$log['record']  =   $record_id;
+			$log['model']   =   $model;
+			$log['time']    =   NOW_TIME;
+			$log['data']    =   array('user'=>$user_id,'model'=>$model,'record'=>$record_id,'time'=>NOW_TIME);
+			foreach ($match[1] as $value){
+				$param = explode('|', $value);
+				if(isset($param[1])){
+					$replace[] = call_user_func($param[1],$log[$param[0]]);
+				}else{
+					$replace[] = $log[$param[0]];
+				}
+			}
+			$data['remark'] =   str_replace($match[0], $replace, $action_info['log']);
+		}else{
+			$data['remark'] =   $action_info['log'];
+		}
+	}else{
+		//未定义日志规则，记录操作url
+		$data['remark']     =   '操作url：'.$_SERVER['REQUEST_URI'];
+	}
 
-    M('ActionLog')->add($data);
+	M('ActionLog')->add($data);
 
-    if(!empty($action_info['rule'])){
-        //解析行为
-        $rules = parse_action($action, $user_id);
+	if(!empty($action_info['rule'])){
+		//解析行为
+		$rules = parse_action($action, $user_id);
 
-        //执行行为
-        $res = execute_action($rules, $action_info['id'], $user_id);
-    }
+		//执行行为
+		$res = execute_action($rules, $action_info['id'], $user_id);
+	}
 }
 
 /**
@@ -631,43 +631,43 @@ function action_log($action = null, $model = null, $record_id = null, $user_id =
  * @author huajie <banhuajie@163.com>
  */
 function parse_action($action = null, $self){
-    if(empty($action)){
-        return false;
-    }
+	if(empty($action)){
+		return false;
+	}
 
-    //参数支持id或者name
-    if(is_numeric($action)){
-        $map = array('id'=>$action);
-    }else{
-        $map = array('name'=>$action);
-    }
+	//参数支持id或者name
+	if(is_numeric($action)){
+		$map = array('id'=>$action);
+	}else{
+		$map = array('name'=>$action);
+	}
 
-    //查询行为信息
-    $info = M('Action')->where($map)->find();
-    if(!$info || $info['status'] != 1){
-        return false;
-    }
+	//查询行为信息
+	$info = M('Action')->where($map)->find();
+	if(!$info || $info['status'] != 1){
+		return false;
+	}
 
-    //解析规则:table:$table|field:$field|condition:$condition|rule:$rule[|cycle:$cycle|max:$max][;......]
-    $rules = $info['rule'];
-    $rules = str_replace('{$self}', $self, $rules);
-    $rules = explode(';', $rules);
-    $return = array();
-    foreach ($rules as $key=>&$rule){
-        $rule = explode('|', $rule);
-        foreach ($rule as $k=>$fields){
-            $field = empty($fields) ? array() : explode(':', $fields);
-            if(!empty($field)){
-                $return[$key][$field[0]] = $field[1];
-            }
-        }
-        //cycle(检查周期)和max(周期内最大执行次数)必须同时存在，否则去掉这两个条件
-        if(!array_key_exists('cycle', $return[$key]) || !array_key_exists('max', $return[$key])){
-            unset($return[$key]['cycle'],$return[$key]['max']);
-        }
-    }
+	//解析规则:table:$table|field:$field|condition:$condition|rule:$rule[|cycle:$cycle|max:$max][;......]
+	$rules = $info['rule'];
+	$rules = str_replace('{$self}', $self, $rules);
+	$rules = explode(';', $rules);
+	$return = array();
+	foreach ($rules as $key=>&$rule){
+		$rule = explode('|', $rule);
+		foreach ($rule as $k=>$fields){
+			$field = empty($fields) ? array() : explode(':', $fields);
+			if(!empty($field)){
+				$return[$key][$field[0]] = $field[1];
+			}
+		}
+		//cycle(检查周期)和max(周期内最大执行次数)必须同时存在，否则去掉这两个条件
+		if(!array_key_exists('cycle', $return[$key]) || !array_key_exists('max', $return[$key])){
+			unset($return[$key]['cycle'],$return[$key]['max']);
+		}
+	}
 
-    return $return;
+	return $return;
 }
 
 /**
@@ -679,68 +679,68 @@ function parse_action($action = null, $self){
  * @author huajie <banhuajie@163.com>
  */
 function execute_action($rules = false, $action_id = null, $user_id = null){
-    if(!$rules || empty($action_id) || empty($user_id)){
-        return false;
-    }
+	if(!$rules || empty($action_id) || empty($user_id)){
+		return false;
+	}
 
-    $return = true;
-    foreach ($rules as $rule){
+	$return = true;
+	foreach ($rules as $rule){
 
-        //检查执行周期
-        $map = array('action_id'=>$action_id, 'user_id'=>$user_id);
-        $map['create_time'] = array('gt', NOW_TIME - intval($rule['cycle']) * 3600);
-        $exec_count = M('ActionLog')->where($map)->count();
-        if($exec_count > $rule['max']){
-            continue;
-        }
+		//检查执行周期
+		$map = array('action_id'=>$action_id, 'user_id'=>$user_id);
+		$map['create_time'] = array('gt', NOW_TIME - intval($rule['cycle']) * 3600);
+		$exec_count = M('ActionLog')->where($map)->count();
+		if($exec_count > $rule['max']){
+			continue;
+		}
 
-        //执行数据库操作
-        $Model = M(ucfirst($rule['table']));
-        $field = $rule['field'];
-        $res = $Model->where($rule['condition'])->setField($field, array('exp', $rule['rule']));
+		//执行数据库操作
+		$Model = M(ucfirst($rule['table']));
+		$field = $rule['field'];
+		$res = $Model->where($rule['condition'])->setField($field, array('exp', $rule['rule']));
 
-        if(!$res){
-            $return = false;
-        }
-    }
-    return $return;
+		if(!$res){
+			$return = false;
+		}
+	}
+	return $return;
 }
 
 //基于数组创建目录和文件
 function create_dir_or_files($files){
-    foreach ($files as $key => $value) {
-        if(substr($value, -1) == '/'){
-            mkdir($value);
-        }else{
-            @file_put_contents($value, '');
-        }
-    }
+	foreach ($files as $key => $value) {
+		if(substr($value, -1) == '/'){
+			mkdir($value);
+		}else{
+			@file_put_contents($value, '');
+		}
+	}
 }
 
 if(!function_exists('array_column')){
-    function array_column(array $input, $columnKey, $indexKey = null) {
-        $result = array();
-        if (null === $indexKey) {
-            if (null === $columnKey) {
-                $result = array_values($input);
-            } else {
-                foreach ($input as $row) {
-                    $result[] = $row[$columnKey];
-                }
-            }
-        } else {
-            if (null === $columnKey) {
-                foreach ($input as $row) {
-                    $result[$row[$indexKey]] = $row;
-                }
-            } else {
-                foreach ($input as $row) {
-                    $result[$row[$indexKey]] = $row[$columnKey];
-                }
-            }
-        }
-        return $result;
-    }
+	function array_column(array $input, $columnKey, $indexKey = null) {
+		$result = array();
+		if (null === $indexKey) {
+			if (null === $columnKey) {
+				$result = array_values($input);
+			} else {
+				foreach ($input as $row) {
+					$result[] = $row[$columnKey];
+				}
+			}
+		} else {
+			if (null === $columnKey) {
+				foreach ($input as $row) {
+					$result[$row[$indexKey]] = $row;
+				}
+			} else {
+				foreach ($input as $row) {
+					$result[$row[$indexKey]] = $row[$columnKey];
+				}
+			}
+		}
+		return $result;
+	}
 }
 
 /**
@@ -750,17 +750,17 @@ if(!function_exists('array_column')){
  * @author huajie <banhuajie@163.com>
  */
 function get_table_name($model_id = null){
-    if(empty($model_id)){
-        return false;
-    }
-    $Model = M('Model');
-    $name = '';
-    $info = $Model->getById($model_id);
-    if($info['extend'] != 0){
-        $name = $Model->getFieldById($info['extend'], 'name').'_';
-    }
-    $name .= $info['name'];
-    return $name;
+	if(empty($model_id)){
+		return false;
+	}
+	$Model = M('Model');
+	$name = '';
+	$info = $Model->getById($model_id);
+	if($info['extend'] != 0){
+		$name = $Model->getFieldById($info['extend'], 'name').'_';
+	}
+	$name .= $info['name'];
+	return $name;
 }
 
 /**
@@ -770,59 +770,59 @@ function get_table_name($model_id = null){
  * @return string         属性信息
  */
 function get_model_attribute($model_id, $group = true){
-    static $list;
+	static $list;
 
-    /* 非法ID */
-    if(empty($model_id) || !is_numeric($model_id)){
-        return '';
-    }
+	/* 非法ID */
+	if(empty($model_id) || !is_numeric($model_id)){
+		return '';
+	}
 
-    /* 读取缓存数据 */
-    if(empty($list)){
-        $list = S('attribute_list');
-    }
+	/* 读取缓存数据 */
+	if(empty($list)){
+		$list = S('attribute_list');
+	}
 
-    /* 获取属性 */
-    if(!isset($list[$model_id])){
-        $map = array('model_id'=>$model_id);
-        $extend = M('Model')->getFieldById($model_id,'extend');
+	/* 获取属性 */
+	if(!isset($list[$model_id])){
+		$map = array('model_id'=>$model_id);
+		$extend = M('Model')->getFieldById($model_id,'extend');
 
-        if($extend){
-            $map = array('model_id'=> array("in", array($model_id, $extend)));
-        }
-        $info = M('Attribute')->where($map)->select();
-        $list[$model_id] = $info;
-        //S('attribute_list', $list); //更新缓存
-    }
+		if($extend){
+			$map = array('model_id'=> array("in", array($model_id, $extend)));
+		}
+		$info = M('Attribute')->where($map)->select();
+		$list[$model_id] = $info;
+		//S('attribute_list', $list); //更新缓存
+	}
 
-    $attr = array();
-    foreach ($list[$model_id] as $value) {
-        $attr[$value['id']] = $value;
-    }
+	$attr = array();
+	foreach ($list[$model_id] as $value) {
+		$attr[$value['id']] = $value;
+	}
 
-    if($group){
-        $sort  = M('Model')->getFieldById($model_id,'field_sort');
+	if($group){
+		$sort  = M('Model')->getFieldById($model_id,'field_sort');
 
-        if(empty($sort)){	//未排序
-            $group = array(1=>array_merge($attr));
-        }else{
-            $group = json_decode($sort, true);
+		if(empty($sort)){	//未排序
+			$group = array(1=>array_merge($attr));
+		}else{
+			$group = json_decode($sort, true);
 
-            $keys  = array_keys($group);
-            foreach ($group as &$value) {
-                foreach ($value as $key => $val) {
-                    $value[$key] = $attr[$val];
-                    unset($attr[$val]);
-                }
-            }
+			$keys  = array_keys($group);
+			foreach ($group as &$value) {
+				foreach ($value as $key => $val) {
+					$value[$key] = $attr[$val];
+					unset($attr[$val]);
+				}
+			}
 
-            if(!empty($attr)){
-                $group[$keys[0]] = array_merge($group[$keys[0]], $attr);
-            }
-        }
-        $attr = $group;
-    }
-    return $attr;
+			if(!empty($attr)){
+				$group[$keys[0]] = array_merge($group[$keys[0]], $attr);
+			}
+		}
+		$attr = $group;
+	}
+	return $attr;
 }
 
 /**
@@ -833,15 +833,15 @@ function get_model_attribute($model_id, $group = true){
  * @param  array|string  $vars 参数
  */
 function api($name,$vars=array()){
-    $array     = explode('/',$name);
-    $method    = array_pop($array);
-    $classname = array_pop($array);
-    $module    = $array? array_pop($array) : 'Common';
-    $callback  = $module.'\\Api\\'.$classname.'Api::'.$method;
-    if(is_string($vars)) {
-        parse_str($vars,$vars);
-    }
-    return call_user_func_array($callback,$vars);
+	$array     = explode('/',$name);
+	$method    = array_pop($array);
+	$classname = array_pop($array);
+	$module    = $array? array_pop($array) : 'Common';
+	$callback  = $module.'\\Api\\'.$classname.'Api::'.$method;
+	if(is_string($vars)) {
+		parse_str($vars,$vars);
+	}
+	return call_user_func_array($callback,$vars);
 }
 
 /**
@@ -853,19 +853,19 @@ function api($name,$vars=array()){
  * @author huajie <banhuajie@163.com>
  */
 function get_table_field($value = null, $condition = 'id', $field = null, $table = null){
-    if(empty($value) || empty($table)){
-        return false;
-    }
+	if(empty($value) || empty($table)){
+		return false;
+	}
 
-    //拼接参数
-    $map[$condition] = $value;
-    $info = M(ucfirst($table))->where($map);
-    if(empty($field)){
-        $info = $info->field(true)->find();
-    }else{
-        $info = $info->getField($field);
-    }
-    return $info;
+	//拼接参数
+	$map[$condition] = $value;
+	$info = M(ucfirst($table))->where($map);
+	if(empty($field)){
+		$info = $info->field(true)->find();
+	}else{
+		$info = $info->getField($field);
+	}
+	return $info;
 }
 
 /**
@@ -876,16 +876,16 @@ function get_table_field($value = null, $condition = 'id', $field = null, $table
  * @author huajie <banhuajie@163.com>
  */
 function get_link($link_id = null, $field = 'url'){
-    $link = '';
-    if(empty($link_id)){
-        return $link;
-    }
-    $link = M('Url')->getById($link_id);
-    if(empty($field)){
-        return $link;
-    }else{
-        return $link[$field];
-    }
+	$link = '';
+	if(empty($link_id)){
+		return $link;
+	}
+	$link = M('Url')->getById($link_id);
+	if(empty($field)){
+		return $link;
+	}else{
+		return $link[$field];
+	}
 }
 
 /**
@@ -896,11 +896,11 @@ function get_link($link_id = null, $field = 'url'){
  * @author huajie <banhuajie@163.com>
  */
 function get_cover($cover_id, $field = null){
-    if(empty($cover_id)){
-        return false;
-    }
-    $picture = M('Picture')->where(array('status'=>1))->getById($cover_id);
-    return empty($field) ? $picture : $picture[$field];
+	if(empty($cover_id)){
+		return false;
+	}
+	$picture = M('Picture')->where(array('status'=>1))->getById($cover_id);
+	return empty($field) ? $picture : $picture[$field];
 }
 
 /**
@@ -911,17 +911,17 @@ function get_cover($cover_id, $field = null){
  * @author huajie <banhuajie@163.com>
  */
 function check_document_position($pos = 0, $contain = 0){
-    if(empty($pos) || empty($contain)){
-        return false;
-    }
+	if(empty($pos) || empty($contain)){
+		return false;
+	}
 
-    //将两个参数进行按位与运算，不为0则表示$contain属于$pos
-    $res = $pos & $contain;
-    if($res !== 0){
-        return true;
-    }else{
-        return false;
-    }
+	//将两个参数进行按位与运算，不为0则表示$contain属于$pos
+	$res = $pos & $contain;
+	if($res !== 0){
+		return true;
+	}else{
+		return false;
+	}
 }
 
 /**
@@ -930,23 +930,23 @@ function check_document_position($pos = 0, $contain = 0){
  */
 
 function get_stemma($pids,Model &$model, $field='id'){
-    $collection = array();
+	$collection = array();
 
-    //非空判断
-    if(empty($pids)){
-        return $collection;
-    }
+	//非空判断
+	if(empty($pids)){
+		return $collection;
+	}
 
-    if( is_array($pids) ){
-        $pids = trim(implode(',',$pids),',');
-    }
-    $result     = $model->field($field)->where(array('pid'=>array('IN',(string)$pids)))->select();
-    $child_ids  = array_column ((array)$result,'id');
+	if( is_array($pids) ){
+		$pids = trim(implode(',',$pids),',');
+	}
+	$result = $model->field($field)->where(array('pid'=>array('IN',(string)$pids)))->select();
+	$child_ids = array_column ((array)$result,'id');
 
-    while( !empty($child_ids) ){
-        $collection = array_merge($collection,$result);
-        $result     = $model->field($field)->where( array( 'pid'=>array( 'IN', $child_ids ) ) )->select();
-        $child_ids  = array_column((array)$result,'id');
-    }
-    return $collection;
+	while( !empty($child_ids) ){
+		$collection = array_merge($collection,$result);
+		$result = $model->field($field)->where(array('pid'=>array('IN', $child_ids)))->select();
+		$child_ids = array_column((array)$result,'id');
+	}
+	return $collection;
 }

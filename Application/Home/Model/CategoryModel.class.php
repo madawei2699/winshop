@@ -68,7 +68,7 @@ class CategoryModel extends Model{
 		$map  = array('status' => 1);
 		$list = $this->field($field)->where($map)->order('sort')->select();
 		$list = list_to_tree($list, $pk = 'id', $pid = 'pid', $child = '_', $root = $id);
-		
+
 		/* 获取返回数据 */
 		if(isset($info)){ //指定分类则返回当前分类极其子分类
 			$info['_'] = $list;
@@ -84,7 +84,7 @@ class CategoryModel extends Model{
 	 * @param  integer $id    分类ID
 	 * @param  boolean $field 查询字段
 	 * @return array
-	 * @author 麦当苗儿 <zuojiazi@vip.qq.com>         
+	 * @author 麦当苗儿 <zuojiazi@vip.qq.com>
 	 */
 	public function getSameLevel($id, $field = true){
 		$info = $this->info($id, 'pid');
@@ -130,29 +130,29 @@ class CategoryModel extends Model{
 	 */
 	protected function _after_find(&$data, $options){
 		/* 分割模型 */
-        if(!empty($data['model'])){
-            $data['model'] = explode(',', $data['model']);
-        }
+				if(!empty($data['model'])){
+						$data['model'] = explode(',', $data['model']);
+				}
 
-        /* 分割文档类型 */
-        if(!empty($data['type'])){
-            $data['type'] = explode(',', $data['type']);
-        }
+				/* 分割文档类型 */
+				if(!empty($data['type'])){
+						$data['type'] = explode(',', $data['type']);
+				}
 
-        /* 分割模型 */
-        if(!empty($data['reply_model'])){
-            $data['reply_model'] = explode(',', $data['reply_model']);
-        }
+				/* 分割模型 */
+				if(!empty($data['reply_model'])){
+						$data['reply_model'] = explode(',', $data['reply_model']);
+				}
 
-        /* 分割文档类型 */
-        if(!empty($data['reply_type'])){
-            $data['reply_type'] = explode(',', $data['reply_type']);
-        }
+				/* 分割文档类型 */
+				if(!empty($data['reply_type'])){
+						$data['reply_type'] = explode(',', $data['reply_type']);
+				}
 
-        /* 还原扩展数据 */
-        if(!empty($data['extend'])){
-            $data['extend'] = json_decode($data['extend'], true);
-        }
+				/* 还原扩展数据 */
+				if(!empty($data['extend'])){
+						$data['extend'] = json_decode($data['extend'], true);
+				}
 	}
 
 }

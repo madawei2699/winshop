@@ -15,7 +15,7 @@ namespace Home\Controller;
  */
 class ArticleController extends HomeController {
 
-    /* 文档模型频道页 */
+	/* 文档模型频道页 */
 	public function index(){
 		/* 分类信息 */
 		$category = $this->category();

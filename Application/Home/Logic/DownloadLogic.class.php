@@ -37,7 +37,7 @@ class DownloadLogic extends BaseLogic{
 			$this->error = '获取上传文件信息失败！';
 			return false;
 		}
-		
+
 		/* 添加或更新数据 */
 		if(empty($data['id'])){//新增数据
 			$data['id'] = $id;

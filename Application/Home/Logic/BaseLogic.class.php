@@ -19,12 +19,12 @@ class BaseLogic extends Model{
 	/**
 	 * 构造函数，用于这是Logic层的表前缀
 	 * @param string $name 模型名称
-     * @param string $tablePrefix 表前缀
-     * @param mixed $connection 数据库连接信息
+		 * @param string $tablePrefix 表前缀
+		 * @param mixed $connection 数据库连接信息
 	 */
 	public function __construct($name = '', $tablePrefix = '', $connection = '') {
 		/* 设置默认的表前缀 */
-		$this->tablePrefix = C('DB_PREFIX') . 'document_'; 
+		$this->tablePrefix = C('DB_PREFIX') . 'document_';
 		/* 执行构造方法 */
 		parent::__construct($name, $tablePrefix, $connection);
 	}

@@ -16,7 +16,7 @@ use Think\Action;
  */
 
 class CategoryWidget extends Action{
-	
+
 	/* 显示指定分类的同级分类或子分类列表 */
 	public function lists($cate, $child = false){
 		$field = 'id,name,pid,title,link_id';
@@ -30,5 +30,5 @@ class CategoryWidget extends Action{
 		$this->assign('current', $cate);
 		$this->display('Category/lists');
 	}
-	
+
 }
