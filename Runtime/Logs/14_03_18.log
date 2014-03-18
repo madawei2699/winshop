@@ -1,0 +1,509 @@
+[ 2014-03-18T16:46:25+08:00 ] 127.0.0.1 /winshop/
+SQL: SHOW COLUMNS FROM `winshop_category` [ RunTime:0.012001s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_document` [ RunTime:0.024001s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `winshop_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1395132385 ) AND ( deadline = 0 OR deadline > 1395132385 ) ORDER BY `id` DESC  [ RunTime:0.009001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_channel` [ RunTime:0.008001s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `winshop_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.015001s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.073004s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.005001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007001s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.001000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `winshop_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1395132385 ) AND ( deadline = 0 OR deadline > 1395132385 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.032002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.011000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.009001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.009001s ]
+
+[ 2014-03-18T16:46:30+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/User/login.html
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_channel` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `winshop_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.037002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:46:30+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/User/verify.html
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2014-03-18T16:46:33+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/User/register.html
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_channel` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `winshop_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.023002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:46:33+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/User/verify.html
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:46:35+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/User/login.html
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_channel` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `winshop_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.027002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2014-03-18T16:46:36+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/User/verify.html
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:46:39+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/User/login.html
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_channel` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `winshop_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.023001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2014-03-18T16:46:39+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/User/verify.html
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:46:44+08:00 ] 127.0.0.1 /winshop/index.php?s=/Admin/Public/login.html
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.033002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2014-03-18T16:46:46+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/User/verify.html
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2014-03-18T16:46:48+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/index/index.html
+SQL: SHOW COLUMNS FROM `winshop_category` [ RunTime:0.003000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_document` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `winshop_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1395132408 ) AND ( deadline = 0 OR deadline > 1395132408 ) ORDER BY `id` DESC  [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_channel` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `winshop_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.017001s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `winshop_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1395132408 ) AND ( deadline = 0 OR deadline > 1395132408 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.006000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:46:59+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/index/index.html
+SQL: SHOW COLUMNS FROM `winshop_category` [ RunTime:0.003001s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_document` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `winshop_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1395132419 ) AND ( deadline = 0 OR deadline > 1395132419 ) ORDER BY `id` DESC  [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_channel` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `winshop_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.017001s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `winshop_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1395132419 ) AND ( deadline = 0 OR deadline > 1395132419 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.006001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:48:49+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/Article/index/category/blog.html
+SQL: SHOW COLUMNS FROM `winshop_category` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `name` = 'blog' ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_channel` [ RunTime:0.003001s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `winshop_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.027001s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_document` [ RunTime:0.003000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `winshop_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1395132529 ) AND ( deadline = 0 OR deadline > 1395132529 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.010001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:49:02+08:00 ] 127.0.0.1 /winshop/index.php?s=/Admin/Public/login.html
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:49:16+08:00 ] 127.0.0.1 /winshop/index.php?s=/Admin/Public/login.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `winshop_ucenter_member` [ RunTime:0.054003s ]
+SQL: SELECT * FROM `winshop_ucenter_member` WHERE ( `username` = 'admin' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: UPDATE `winshop_ucenter_member` SET `last_login_time`=1395132555,`last_login_ip`='2130706433' WHERE ( `id` = 1 ) [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_member` [ RunTime:0.027001s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `winshop_member` WHERE ( `uid` = 1 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_action` [ RunTime:0.025002s ]
+SQL: SELECT * FROM `winshop_action` WHERE ( `name` = 'user_login' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_action_log` [ RunTime:0.033002s ]
+SQL: INSERT INTO `winshop_action_log` (`action_id`,`user_id`,`action_ip`,`model`,`record_id`,`create_time`,`remark`) VALUES (1,1,2130706433,'member',1,1395132555,'admin在2014-03-18 16:49登录了后台') [ RunTime:0.001000s ]
+SQL: SELECT * FROM `winshop_action` WHERE ( `name` = 'user_login' ) LIMIT 1   [ RunTime:0.001000s ]
+NOTIC: [8] Undefined offset: 1 G:\xampp\htdocs\winshop\Application\Common\Common\function.php 第 665 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given G:\xampp\htdocs\winshop\Application\Common\Common\function.php 第 665 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_action_log` WHERE ( `action_id` = 1 ) AND ( `user_id` = 1 ) AND ( `create_time` > 1395046155 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_member` [ RunTime:0.004000s ]
+SQL: UPDATE `winshop_member` SET `score`=score+10 WHERE ( uid=1 AND status>-1 ) [ RunTime:0.012001s ]
+SQL: UPDATE `winshop_member` SET `login`=`login`+1,`last_login_time`=1395132555,`last_login_ip`='2130706433' WHERE ( `uid` = 1 ) [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:49:18+08:00 ] 127.0.0.1 /winshop/index.php?s=/Admin/Index/index.html
+SQL: SHOW COLUMNS FROM `winshop_menu` [ RunTime:0.089005s ]
+SQL: SELECT * FROM `winshop_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010001s ]
+SQL: SELECT `id` FROM `winshop_menu` WHERE ( url like '%Index/index%' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_menu` [ RunTime:0.005000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `winshop_menu` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT DISTINCT  `group` FROM `winshop_menu` WHERE ( pid = 1 )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`url` FROM `winshop_menu` WHERE ( `pid` = 1 ) AND ( `hide` = 0 )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `winshop_menu` WHERE ( `group` = '常用管理' ) AND ( `pid` = 1 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ AdminIndex ] --START--
+SQL: SHOW COLUMNS FROM `winshop_addons` [ RunTime:0.058003s ]
+SQL: SELECT `config` FROM `winshop_addons` WHERE ( `name` = 'SiteStat' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_member` [ RunTime:0.004000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_member` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_action_log` [ RunTime:0.004000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_action_log` LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_document` [ RunTime:0.004000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_document` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_category` [ RunTime:0.004001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_category` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_model` [ RunTime:0.026001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_model` LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.146009s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run SiteStat [ RunTime:0.135008s ]
+SQL: SELECT `config` FROM `winshop_addons` WHERE ( `name` = 'SystemInfo' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-2.226128s ]
+SQL: select version() as v; [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.067004s ]
+INFO: [ view_parse ] --END-- [ RunTime:-2.014115s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-2.080119s ]
+INFO: Run SystemInfo [ RunTime:2.081119s ]
+SQL: SELECT `config` FROM `winshop_addons` WHERE ( `name` = 'DevTeam' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.001001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-2.252129s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:-2.090120s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-2.104120s ]
+INFO: Run DevTeam [ RunTime:0.023001s ]
+INFO: [ AdminIndex ] --END-- [ RunTime:2.240128s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.016000s ]
+INFO: [ view_parse ] --END-- [ RunTime:-2.090120s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-2.106121s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2014-03-18T16:49:23+08:00 ] 127.0.0.1 /winshop/index.php?s=/Admin/Article/mydocument.html
+SQL: SHOW COLUMNS FROM `winshop_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `winshop_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `winshop_menu` WHERE ( url like '%Article/mydocument%' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_menu` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `winshop_menu` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT DISTINCT  `group` FROM `winshop_menu` WHERE ( pid = 2 )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`url` FROM `winshop_menu` WHERE ( `pid` = 2 ) AND ( `hide` = 0 )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `winshop_menu` WHERE ( `group` = '内容' ) AND ( `pid` = 2 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_auth_group_access` [ RunTime:0.014000s ]
+SQL: SELECT `extend_id` FROM winshop_auth_group_access g INNER JOIN winshop_auth_extend c on g.group_id=c.group_id  WHERE ( g.uid='1' and c.type='1' and !isnull(extend_id) )  [ RunTime:0.017001s ]
+SQL: SHOW COLUMNS FROM `winshop_category` [ RunTime:0.004001s ]
+SQL: SELECT `id`,`title`,`pid`,`allow_publish` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY pid,sort  [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_document` [ RunTime:0.005000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_document` WHERE ( `status` IN ('0','1','2') ) AND ( `uid` = 1 ) AND ( `pid` = 0 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `winshop_document` WHERE ( `status` IN ('0','1','2') ) AND ( `uid` = 1 ) AND ( `pid` = 0 ) ORDER BY update_time desc LIMIT 0,10   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_document` [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_document` WHERE ( pid=1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `title` FROM `winshop_category` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.095005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.095005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:49:25+08:00 ] 127.0.0.1 /winshop/index.php?s=/Admin/Index/index.html
+SQL: SHOW COLUMNS FROM `winshop_menu` [ RunTime:0.002001s ]
+SQL: SELECT * FROM `winshop_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `winshop_menu` WHERE ( url like '%Index/index%' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_menu` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `winshop_menu` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT DISTINCT  `group` FROM `winshop_menu` WHERE ( pid = 1 )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`url` FROM `winshop_menu` WHERE ( `pid` = 1 ) AND ( `hide` = 0 )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `winshop_menu` WHERE ( `group` = '常用管理' ) AND ( `pid` = 1 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ AdminIndex ] --START--
+SQL: SHOW COLUMNS FROM `winshop_addons` [ RunTime:0.002001s ]
+SQL: SELECT `config` FROM `winshop_addons` WHERE ( `name` = 'SiteStat' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_member` [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_member` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_action_log` [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_action_log` LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_document` [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_document` LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_category` [ RunTime:0.003000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_category` LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_model` [ RunTime:0.002001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_model` LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.032002s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.004000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run SiteStat [ RunTime:0.027002s ]
+SQL: SELECT `config` FROM `winshop_addons` WHERE ( `name` = 'SystemInfo' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.327019s ]
+SQL: select version() as v; [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.010001s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.287016s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.298017s ]
+INFO: Run SystemInfo [ RunTime:0.299017s ]
+SQL: SELECT `config` FROM `winshop_addons` WHERE ( `name` = 'DevTeam' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.341019s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.304017s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.308017s ]
+INFO: Run DevTeam [ RunTime:0.009000s ]
+INFO: [ AdminIndex ] --END-- [ RunTime:0.336020s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.304017s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.309018s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:49:25+08:00 ] 127.0.0.1 /winshop/index.php?s=/Admin/Article/mydocument.html
+SQL: SHOW COLUMNS FROM `winshop_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `winshop_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `winshop_menu` WHERE ( url like '%Article/mydocument%' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_menu` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `winshop_menu` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT DISTINCT  `group` FROM `winshop_menu` WHERE ( pid = 2 )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`url` FROM `winshop_menu` WHERE ( `pid` = 2 ) AND ( `hide` = 0 )  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `winshop_menu` WHERE ( `group` = '内容' ) AND ( `pid` = 2 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_auth_group_access` [ RunTime:0.001000s ]
+SQL: SELECT `extend_id` FROM winshop_auth_group_access g INNER JOIN winshop_auth_extend c on g.group_id=c.group_id  WHERE ( g.uid='1' and c.type='1' and !isnull(extend_id) )  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_category` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`title`,`pid`,`allow_publish` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY pid,sort  [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_document` [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_document` WHERE ( `status` IN ('0','1','2') ) AND ( `uid` = 1 ) AND ( `pid` = 0 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `winshop_document` WHERE ( `status` IN ('0','1','2') ) AND ( `uid` = 1 ) AND ( `pid` = 0 ) ORDER BY update_time desc LIMIT 0,10   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `winshop_document` [ RunTime:0.002001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `winshop_document` WHERE ( pid=1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `title` FROM `winshop_category` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.056004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.057004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-03-18T16:49:37+08:00 ] 127.0.0.1 /winshop/index.php?s=/Home/Index/index.html
+SQL: SHOW COLUMNS FROM `winshop_category` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_document` [ RunTime:0.002001s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `winshop_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1395132577 ) AND ( deadline = 0 OR deadline > 1395132577 ) ORDER BY `id` DESC  [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `winshop_channel` [ RunTime:0.002000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `winshop_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.017001s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `winshop_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `winshop_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `winshop_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1395132577 ) AND ( deadline = 0 OR deadline > 1395132577 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.006000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
