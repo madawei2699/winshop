@@ -1,0 +1,72 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<div class="main-title">
+		<h2>添加商品</h2>
+	</div>
+	<form action="{:U()}" method="post" class="form-horizontal">
+		<div class="form-item">
+			<label class="item-label">标题<span class="check-tips">（用户名会作为默认的昵称）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="username" value="">
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">价格<span class="check-tips">（用户密码不能少于6位）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-small" name="username" value="">
+			</div>
+		</div>
+
+		<div class="form-item">
+			<label class="item-label">规格<span class="check-tips">（用户密码不能少于6位）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="username" value="">
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">数量<span class="check-tips">（用户密码不能少于6位）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-small" name="username" value="">
+			</div>
+		</div>
+
+		<div class="form-item">
+			<label class="item-label">首页推荐<span class="check-tips">（用户密码不能少于6位）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-small" name="username" value="">
+			</div>
+		</div>
+
+		<div class="form-item">
+			<label class="item-label">图片<span class="check-tips">（用户密码不能少于6位）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-small" name="username" value="">
+			</div>
+		</div>
+
+		<div class="form-item">
+			<label class="item-label">描述<span class="check-tips">（用户密码不能少于6位）</span></label>
+			<div class="controls">
+				<textarea name="{$field.name}">{$field.value}</textarea>
+				{:hook('adminArticleEdit', array('name'=>$field['name'],'value'=>$field['value']))}
+			</div>
+		</div>
+
+
+
+
+		<div class="form-item">
+			<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+			<button class="btn save-btn" url="{:U('article/autoSave')}" target-form="form-horizontal" id="autoSave">存草稿</button>
+		</div>
+	</form>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav('{:U('User/index')}');
+	</script>
+</block>

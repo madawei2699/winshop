@@ -43,7 +43,7 @@
 
 		<!-- 导航扩展 -->
 		<ul class="main-sub">
-			<a href="<?php echo U('Home/Index/index');?>">返回前台</a>
+			<a href="<?php echo U('Home/Index/index');?>" target="_blank">返回前台</a>
 		</ul>
 	</div>
 	<!-- /头部 -->
