@@ -69,6 +69,6 @@ wwwroot
 </pre>
 
 ##如何开发？
-1.clone本项目到apache www目录；
-2.导入根目录下面的winshop.sql；
+1.clone本项目到apache www目录；  
+2.导入根目录下面的winshop.sql；  
 3.修改Application/Common/Conf/config.php中的数据库配置信息。
