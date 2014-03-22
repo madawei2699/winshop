@@ -1,14 +1,18 @@
 require(['../config'], function(){
 	require(['home.index2']);
 })
-, define("home.index2", ['jquery', 'bootstrap'], function () {
+, define("home.index2", ['zepto', 'gmu', 'suggestion', 'slider', 'slider-touch', 'slider-autoplay', 'slider-lazyloadimg'], function () {
 
-	$(function(){
-		$(window).resize(function(){
-			$("#main-container").css("min-height", $(window).height() - 343);
-			console.log('333')
-		}).resize();
-	})
+	$('#slider').slider({
+		imgZoom: true
+	});
 
 
-})
+	(function () {
+		$('#input').suggestion({
+				source: "../../data/suggestion.php"
+		});
+	})();
+
+
+});

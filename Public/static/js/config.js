@@ -1,25 +1,37 @@
 require.config({
 	baseUrl: 'Public/static/js/',
 	paths: {
-		'jquery': 'jquery-2.0.3.min',
-		'bootstrap': 'bootstrap/bootstrap',
-		'validator': 'bootstrap/bootstrapValidator',
+		'zepto': 'gmu/zepto',
+		'gmu': 'gmu/gmu',
+
+		'suggestion': 'gmu/widget/suggestion/suggestion',
+
+
+		'slider': 'gmu/widget/slider/slider',
+		'slider-touch': 'gmu/widget/slider/$touch',
+		'slider-autoplay': 'gmu/widget/slider/$autoplay',
+		'slider-lazyloadimg': 'gmu/widget/slider/$lazyloadimg',
 	},
 
 	shim: {
-		'jquery': {
-			exports: ['jquery', '$']
+		'gmu': {
+			deps: ['zepto'],
 		},
-		'bootstrap': {
-			deps: ['jquery'],
-			// exports: "jquery.fn.popover"
+		'suggestion': {
+			deps: ['gmu'],
 		},
-		'validator': {
-			deps: ['jquery'],
+		'slider': {
+			deps: ['gmu'],
 		},
-		// 'bootstrap-datepicker': {
-		// 	deps: ['bootstrap'],
-		// 	exports: "jquery.fn.datepicker"
-		// }
+		'slider-touch': {
+			deps: ['gmu'],
+		},
+		'slider-autoplay': {
+			deps: ['gmu'],
+		},
+		'slider-lazyloadimg': {
+			deps: ['gmu'],
+		},
 	}
+
 });

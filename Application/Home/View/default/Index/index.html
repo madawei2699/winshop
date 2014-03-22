@@ -1,49 +1,56 @@
-<extend name="Base/common"/>
-<block name="header">
-	<header class="jumbotron subhead" id="overview">
-		<div class="container">
-			<h2>源自相同起点，演绎不同精彩！</h2>
-			<p class="lead"></p>
-		</div>
-	</header>
-</block>
+<extend name="Base/index"/>
 
-<block name="side">
-<!-- 左侧 nav
-================================================== -->
-	<div class="span3 bs-docs-sidebar">
-		<ul class="nav nav-list bs-docs-sidenav">
-			{:W('Category/lists', array(1, true))}
-		</ul>
-	</div>
-</block>
 
 <block name="body">
-	<div class="span9">
-		<!-- Contents
-		================================================== -->
-		<section id="contents">
-			<article:list name="article" category="1" child="true">
-				<div class="">
-					<h3><a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a></h3>
-				</div>
-				<div>
-					<p class="lead">{$article.description}</p>
-				</div>
-				<div>
-					<span><a href="{:U('Article/detail?id='.$article['id'])}">查看全文</a></span>
-					<span class="pull-right">
-						<span class="author">{$article.uid|get_username}</span>
-						<span>于 {$article.create_time|date='Y-m-d H:i',###}</span> 发表在 <span>
-						<a href="{:U('Article/lists?category='.get_category_name($article['category_id']))}">{$article.category_id|get_category_title}</a></span> ( 阅读：{$article.view} )
-					</span>
-				</div>
-				<hr/>
-			</article:list>
-
-		</section>
-	</div>
+	<div id="slider">
+		<div>
+			<a href="http://www.winhu.com/"><img lazyload="__STATIC__/img/slider/image1.png"></a>
+			<p>专业的微信营销服务团队</p>
 		</div>
+		<div>
+			<a href="http://www.winhu.com/"><img lazyload="__STATIC__/img/slider/image2.png"></a>
+			<p>微商城免费试用，快来体验</p>
+		</div>
+		<div>
+			<a href="http://www.winhu.com/"><img lazyload="__STATIC__/img/slider/image3.png"></a>
+			<p>微社区，移动营销利器</p>
+		</div>
+		<div>
+			<a href="http://www.winhu.com/"><img lazyload="__STATIC__/img/slider/image4.png"></a>
+			<p>2014，新征程，新起点</p>
+		</div>
+	</div>
+
+	<form action="http://www.baidu.com/s" method="get">
+    <div class="search">
+        <div class="search-input"><input type="text" id="input" name="wd"></div>
+        <div class="search-button"><input type="submit" value="搜索"></div>
+    </div>
+	</form>
+
+	<ul class="nav-index">
+		<li>
+			<a href="">
+				<span class="icon icon-sign"></span>
+				<span class="title">今日签到</span>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<span class="icon icon-fav"></span>
+				<span class="title">我的收藏</span>
+			</a>
+		</li>
+		<li class="last">
+			<a href="">
+				<span class="icon icon-order"></span>
+				<span class="title">查看订单</span>
+			</a>
+		</li>
+	</ul>
+
+
+
 </block>
 
 <block name="script">
