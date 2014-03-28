@@ -17,8 +17,7 @@ a {
 /** search */
 .search {
 	position: relative;
-	margin-top: 5px;
-	padding: 5px;
+	padding: .3em;
 	background: #F3F3F3;
 	display: -webkit-box;
 	-webkit-box-pack: start;
@@ -64,26 +63,26 @@ a {
 
 /*action*/
 .nav-index {
-	padding: 5px;
 	display: -moz-box; /* Firefox */
 	display: -webkit-box; /* Safari and Chrome */
 	display: box;
 	width: 100%;
 }
 .nav-index li {
-	margin-right: 10px;
 	-webkit-box-flex: 1;
 	-moz-box-flex: 1;
 	-ms-box-flex: 1;
 	box-flex: 1;
-	border: 1px solid #e4e4e4;
+	border-left: .1em solid #e4e4e4;
 	background: #fff;
+}
+.nav-index li:first-child {
+	border-left: none;
 }
 .nav-index li a {
 	display: block;
-	padding: .5em 0 0;
+	padding: .3em 0;
 	width: 100%;
-	height: 5.5em;
 	text-align: center;
 }
 .nav-index li a .icon {
@@ -106,6 +105,7 @@ a {
 	background: url(../img/order.png) no-repeat 0 0;
 }
 .nav-index li a .title {
+	display: block;
 	color: #666;
 	font-size: 1.1em;
 	font-weight: bold;
@@ -113,18 +113,34 @@ a {
 
 /*item-index*/
 .item-index {
-	display: inline-block;
-	padding: 5px;
+	padding: .3em 0;
 }
 .item-index li {
 	float: left;
-	margin-bottom: .5em;
+	display: inline;
+	margin-bottom: .3em;
 	width: 50%;
-	/*border: 1px solid #e4e4e4;*/
-	background: #fff;
 }
 .item-index li a {
-	/*display: block;*/
+	display: block;
+	background: #fff;
+}
+.item-index li.odd a {
+	margin-right: .15em;
+}
+.item-index li.even a {
+	margin-left: .15em;
+}
+.item-index li a span.title,
+.item-index li a span.price {
+	display: block;
+	height: 1.5em;
+	line-height: 1.5em;
+	overflow: hidden;
+	text-align: center;
+}
+.item-index li a span.price {
+	color: #f60;
 }
 .item-index li .img {
 	display: block;
@@ -132,14 +148,15 @@ a {
 }
 .item-index li .img img {
 	width: 100%;
-	height: 100%;
 }
 
 
 /*footer*/
 .copyright {
-	height: 30px;
-	line-height: 30px;
+	display: inline-block;
+	width: 100%;
+	height: 2em;
+	line-height: 2em;
 	color: #999;
 	font-size: 12px;
 	text-align: center;
