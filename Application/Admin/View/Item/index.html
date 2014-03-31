@@ -21,30 +21,12 @@
 	<div class="cf">
 		<div class="fl">
 			<div class="btn-group">
-				<gt name="allow" value="0">
-					<button class="btn document_add" <if condition="count($model) eq 1">url="{:U('article/add',array('cate_id'=>$cate_id,'pid'=>I('pid',0),'model_id'=>$model[0]))}"</if>>新 增
-						<if condition="count($model) gt 1"><i class="btn-arrowdown"></i></if>
-					</button>
-					<if condition="count($model) gt 1">
-					<ul class="dropdown nav-list">
-						<volist name="model" id="vo">
-						<li><a href="{:U('article/add',array('cate_id'=>$cate_id,'model_id'=>$vo,'pid'=>I('pid',0)))}">{$vo|get_document_model='title'}</a></li>
-						</volist>
-					</ul>
-					</if>
-				<else/>
-					<button class="btn disabled" >新 增
-						<if condition="count($model) gt 1"><i class="btn-arrowdown"></i></if>
-					</button>
-				</gt>
+				<a class="btn item_add" href="{:U('Item/add')}">新 增</a>
 			</div>
-			<button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>1))}">启 用</button>
-			<button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>0))}">禁 用</button>
-			<button class="btn ajax-post" target-form="ids" url="{:U("Article/move")}">移 动</button>
-			<button class="btn ajax-post" target-form="ids" url="{:U("Article/copy")}">复 制</button>
-			<button class="btn ajax-post" target-form="ids" hide-data="true" url="{:U("Article/paste")}">粘 贴</button>
-			<input type="hidden" class="hide-data" name="cate_id" value="{$cate_id}"/>
-			<input type="hidden" class="hide-data" name="pid" value="{$pid}"/>
+			<button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>1))}">上 架</button>
+			<button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>0))}">下 架</button>
+			<button class="btn ajax-post" target-form="ids" url="{:U("Article/move")}">推 荐</button>
+			<button class="btn ajax-post" target-form="ids" url="{:U("Article/copy")}">热 卖</button>
 			<button class="btn ajax-post confirm" target-form="ids" url="{:U("Article/setStatus",array("status"=>-1))}">删 除</button>
 			<!-- <button class="btn document_add" url="{:U('article/batchOperate',array('cate_id'=>$cate_id,'pid'=>I('pid',0)))}">导入</button> -->
 			<button class="btn list_sort" url="{:U('sort',array('cate_id'=>$cate_id,'pid'=>I('pid',0)),'')}">排序</button>
@@ -88,26 +70,26 @@
 		<table>
 			<!-- 表头 -->
 			<thead>
-					<tr>
-							<th class="row-selected row-selected">
-									<input class="check-all" type="checkbox">
-							</th>
-							<volist name="list_grids" id="field">
-									<th>{$field.title}</th>
-							</volist>
-					</tr>
+				<tr>
+					<th class="row-selected row-selected">
+						<input class="check-all" type="checkbox">
+					</th>
+					<volist name="list_grids" id="field">
+						<th>{$field.title}</th>
+					</volist>
+				</tr>
 			</thead>
 
 			<!-- 列表 -->
 			<tbody>
-					<volist name="list" id="data">
-							<tr>
-									<td><input class="ids" type="checkbox" value="{$data['id']}" name="ids[]"></td>
-									<volist name="list_grids" id="grid">
-											<td>{:get_list_field($data,$grid,$model_list)}</td>
-									</volist>
-							</tr>
-					</volist>
+				<volist name="list" id="data">
+					<tr>
+						<td><input class="ids" type="checkbox" value="{$data['id']}" name="ids[]"></td>
+						<volist name="list_grids" id="grid">
+							<td>{:get_list_field($data,$grid,$model_list)}</td>
+						</volist>
+					</tr>
+				</volist>
 			</tbody>
 		</table>
 	</div>

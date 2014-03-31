@@ -21,7 +21,15 @@ class ItemController extends AdminController {
 		$this->display();
 	}
 
-	public function addItem() {
+	public function add() {
+		$this->display();
+	}
+
+	public function recyle() {
+		$this->display();
+	}
+
+	public function draftbox() {
 		$this->display();
 	}
 

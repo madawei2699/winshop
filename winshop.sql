@@ -1136,6 +1136,34 @@ CREATE TABLE IF NOT EXISTS `winshop_userdata` (
   UNIQUE KEY `uid` (`uid`,`type`,`target_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+--
+-- 表的结构 `winshop_item`
+--
+
+CREATE TABLE IF NOT EXISTS `winshop_item` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL COMMENT '商品名称',
+  `intro` text COMMENT '商品详情',
+  `number` int(5) NOT NULL DEFAULT '0' COMMENT '库存量',
+  `price` decimal(8,2) NOT NULL DEFAULT '0.00' COMMENT '商品价格',
+  `transport` decimal(8,2) NOT NULL DEFAULT '0.00' COMMENT '运费',
+  `keyword` varchar(255) NOT NULL DEFAULT '' COMMENT '关键字',
+  `is_del` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0为已删除',
+  `is_new` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1为新品',
+  `is_hot` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1为热销',
+  `is_promote` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1为特价',
+  `is_on_sale` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0为下架，1为上架',
+  `is_set_image` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否已设置图片',
+  `is_lock` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定，1为锁定',
+  `thumb` varchar(255) NOT NULL DEFAULT '' COMMENT '缩略图',
+  `viewnum` int(10) NOT NULL DEFAULT '0' COMMENT '关注度',
+  `favnum` int(10) NOT NULL DEFAULT '0' COMMENT '被收藏次数',
+  `order` tinyint(1) NOT NULL DEFAULT '0' COMMENT '排序',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后修改时间',
+  PRIMARY KEY (`id`),
+  KEY `viewnum` (`viewnum`),
+  KEY `update_time` (`update_time`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

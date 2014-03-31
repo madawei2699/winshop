@@ -17,10 +17,6 @@ class ShopController extends AdminController {
 		$this->display();
 	}
 
-	public function item() {
-		$this->display();
-	}
-
 	public function addItem() {
 		$this->display();
 	}
@@ -29,5 +25,7 @@ class ShopController extends AdminController {
 	public function order() {
 		$this->display();
 	}
+
+	
 
 }
