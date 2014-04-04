@@ -12,17 +12,25 @@ class ItemController extends AdminController {
 	public function index() {
 		$nickname = I('nickname');
 
-
-
-		$this->display();
-	}
-
-	public function item() {
+		print_r($model);
 		$this->display();
 	}
 
 	public function add() {
 		$this->display();
+	}
+
+	/**
+	 * 更新一条数据
+	 * @author laoyu <168834615@qq.com>
+	 */
+	public function update(){
+		$res = D('Item')->update();
+		if(!$res){
+			$this->error(D('Item')->getError());
+		}else{
+			$this->success($res['id']?'更新成功':'新增成功', Cookie('__forward__'));
+		}
 	}
 
 	public function recyle() {

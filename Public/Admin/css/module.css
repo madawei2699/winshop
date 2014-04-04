@@ -59,7 +59,13 @@ select[multiple] {
 
 /* 普通表单 */
 .form-horizontal .form-item {
-	margin-bottom: 5px;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+}
+.form-horizontal .form-action {
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top: 1px solid #e0e0e0
 }
 .form-horizontal .item-label {
 	display: block;
@@ -92,6 +98,20 @@ label.textarea ~ .check-tips {
 	display: block;
 	margin-left: 0;
 	margin-bottom: 10px;
+}
+.form-horizontal .controls .field-group table {
+	border: 1px solid #ddd;
+	background: #fff;
+}
+.form-horizontal .controls .field-group table th,
+.form-horizontal .controls .field-group table td {
+	padding: 5px 10px;
+	border: 1px solid #ddd;
+}
+.form-horizontal .controls .field-group table thead th {
+	white-space: nowrap;
+	text-align: center;
+	background: #eee;
 }
 
 /* 搜索表单 */
@@ -177,16 +197,16 @@ label.textarea ~ .check-tips {
 	white-space: nowrap;
 }
 .adv-sch-pannel .row {
-    display: inline-block;
-    *display: inline;
-    margin-right: 15px;
+		display: inline-block;
+		*display: inline;
+		margin-right: 15px;
 }
 .adv-sch-pannel label{
-    width:70px;
-    display:inline-block;
+		width:70px;
+		display:inline-block;
 }
 .adv-sch-pannel .row{
-    margin-bottom:6px;
+		margin-bottom:6px;
 }
 
 /* 表单宽度预设 */
@@ -246,25 +266,25 @@ label.textarea ~ .check-tips {
 	margin: 10px 0;
 }
 .data-table table {
-    width: 100%;
-    border-collapse: collapse;
+		width: 100%;
+		border-collapse: collapse;
 }
 .data-table caption {
-    height: 30px;
-    line-height: 30px;
-    font-weight: 700;
+		height: 30px;
+		line-height: 30px;
+		font-weight: 700;
 }
 .data-table thead th,
 .data-table tbody td {
-    padding:8px;
-    height: 19px;
-    line-height: 19px;
-    font-weight: 400;
+		padding:8px;
+		height: 19px;
+		line-height: 19px;
+		font-weight: 400;
 }
 .data-table thead th {
-    text-align: left;
-    color:#fff;
-    background-color: #353535;
+		text-align: left;
+		color:#fff;
+		background-color: #353535;
 }
 .data-table tbody tr {
 	background-color: #fefefe;
@@ -276,61 +296,61 @@ label.textarea ~ .check-tips {
 
 /* 复选框的列宽 */
 .row-selected {
-    width: 15px;
+		width: 15px;
 }
 
 /* = 按钮
 ------------------------------------------ */
 /* 常规按钮 */
 .btn {
-    display: inline-block;
-    margin-right: 5px;
-    padding: 6px 16px;
-    font-size: 14px;
-    line-height: 18px;
-    color: #edffd1;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    border: 0 none;
+		display: inline-block;
+		margin-right: 5px;
+		padding: 6px 16px;
+		font-size: 14px;
+		line-height: 18px;
+		color: #edffd1;
+		text-align: center;
+		vertical-align: middle;
+		cursor: pointer;
+		border: 0 none;
 	background-color: #4bbd00;
 	*outline: 0 none;
 }
 .btn:hover {
-    color: #ffffff;
-    text-decoration: none;
-    background-color: #4cdb00;
-    border-bottom: 0 none;
+		color: #ffffff;
+		text-decoration: none;
+		background-color: #4cdb00;
+		border-bottom: 0 none;
 }
 .submit-btn,
 .btn-return {
-    padding: 10px 50px;
-    color: #fff;
-    font-weight: bold;
-    border-color: transparent;
+		padding: 10px 50px;
+		color: #fff;
+		font-weight: bold;
+		border-color: transparent;
 }
 .submit-btn {
-    background-color: #CC3900;
+		background-color: #CC3900;
 }
 .submit-btn:hover {
-    color: #fff;
-    background-color: #ff2610;
+		color: #fff;
+		background-color: #ff2610;
 }
 .btn[disabled],
 .btn.disabled,
 .btn[disabled]:hover,
 .btn.disabled:hover {
-    background-color: #8d8d8d;
+		background-color: #8d8d8d;
 }
 .save-btn {
-    padding: 10px 30px;
-    background-color: #3737BC;
+		padding: 10px 30px;
+		background-color: #3737BC;
 }
 .btn-mini {
-    padding: 4px 10px;
+		padding: 4px 10px;
 }
 .btn-xlarge {
-    padding: 10px 30px;
+		padding: 10px 30px;
 }
 
 /* 按钮组 */
@@ -350,52 +370,52 @@ label.textarea ~ .check-tips {
 .btn-group,
 .btn-group-click {
 	display: inline-block;
-    *display: inline;
+		*display: inline;
 	position: relative;
-    margin-right: 5px;
-    vertical-align: middle;
+		margin-right: 5px;
+		vertical-align: middle;
 }
 .btn-group .btn,
 .btn-group-click .btn {
-    margin-right: 0;
+		margin-right: 0;
 }
 .btn-arrowdown,
 .btn-arrowup {
-    display: inline-block;
-    margin-left: 10px;
-    width: 10px;
-    height: 5px;
-    vertical-align: middle;
-    background-image: url(../images/bg_icon.png);
-    background-repeat: no-repeat;
+		display: inline-block;
+		margin-left: 10px;
+		width: 10px;
+		height: 5px;
+		vertical-align: middle;
+		background-image: url(../images/bg_icon.png);
+		background-repeat: no-repeat;
 }
 .btn-arrowdown {
-    background-position: 0 -25px;
+		background-position: 0 -25px;
 }
 .btn-arrowup {
-    background-position: -25px -25px;
+		background-position: -25px -25px;
 }
 .btn-group .dropdown,
 .btn-group-click .dropdown {
-    display: none;
+		display: none;
 	position: absolute;
 	top: 30px;
 	left: 0;
-    margin-top: 3px;
+		margin-top: 3px;
 	min-width: 85px;
 	border: 1px solid #ccc;
 	background-color: #fff;
 }
 .btn-group .dropdown a,
 .btn-group-click .dropdown a {
-    padding: 6px 16px;
-    height: 18px;
-    line-height: 18px;
-    white-space: nowrap;
+		padding: 6px 16px;
+		height: 18px;
+		line-height: 18px;
+		white-space: nowrap;
 }
 .btn-group .dropdown a:hover,
 .btn-group-click .dropdown a:hover {
-    background-color: #eee;
+		background-color: #eee;
 }
 
 /* = 标签导航
@@ -450,41 +470,41 @@ label.textarea ~ .check-tips {
 /* = 分页
 ------------------------------------------ */
 .page {
-    margin: 10px 0;
-    *zoom: 1;
+		margin: 10px 0;
+		*zoom: 1;
 }
 .page:before,
 .page:after {
-    display: table;
-    content: "";
+		display: table;
+		content: "";
 }
 .page:after {
-    clear:both;
+		clear:both;
 }
 .page a,
 .page span {
-    float: left;
-    margin-left: -1px;
-    padding: 0 14px;
-    height: 30px;
-    line-height: 30px;
-    color: #000;
-    border-top: 1px solid #CCCCCC;
-    border-bottom: 1px solid #CCCCCC;
-    /*background-color: #4bbd00;*/
+		float: left;
+		margin-left: -1px;
+		padding: 0 14px;
+		height: 30px;
+		line-height: 30px;
+		color: #000;
+		border-top: 1px solid #CCCCCC;
+		border-bottom: 1px solid #CCCCCC;
+		/*background-color: #4bbd00;*/
 }
 .page a:hover
  {
-    text-decoration: none;
-    background-color: #387C0B;
+		text-decoration: none;
+		background-color: #387C0B;
 }
 .page .current {
 	border-top: 1px solid #387C0B;
 }
 .page .next,
 .page .prev {
-    font-family: "宋体";
-    font-weight: bold;
+		font-family: "宋体";
+		font-weight: bold;
 }
 .page .rows {
 	border-right: 1px solid #CCCCCC;
@@ -630,7 +650,7 @@ label.textarea ~ .check-tips {
 	background-position: 0 -120px;
 }
 .category > dl > dd > dl:last-child > dd > dl:last-child > dt .add-sub-cate{
-    display: none;
+		display: none;
 }
 .category input{
 	height: 16px;
@@ -665,12 +685,12 @@ label.textarea ~ .check-tips {
 	line-height: 26px;
 	margin-right: 30px;
 	border: 1px solid #ccc;
-	padding-left:5px; 
-}		
+	padding-left:5px;
+}
 .sort_btn button{
 	display: block;
 	margin-bottom: 15px;
-}	
+}
 .sort_option {
 	float: left;
 	margin-right: 16px;

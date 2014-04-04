@@ -199,7 +199,6 @@
 	})
 	$(function(){
 		$('.copyright').html('<div class="copyright"> ©2013 <a href="http://www.topthink.net" target="_blank">topthink.net</a> 上海顶想信息科技有限公司版权所有</div>');
-		// $('.sidebar').remove();
 	})
 </script>
 

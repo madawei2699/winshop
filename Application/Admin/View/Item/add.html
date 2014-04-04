@@ -4,68 +4,184 @@
 	<div class="main-title">
 		<h2>添加商品</h2>
 	</div>
-	<form action="{:U()}" method="post" class="form-horizontal">
-		<div class="form-item">
-			<label class="item-label">商品名称</label>
-			<div class="controls">
-				<input type="text" class="text input-large" name="name" value="">
-			</div>
-		</div>
-		<div class="form-item">
-			<label class="item-label">价格<span class="check-tips">（保留2位小数）</span></label>
-			<div class="controls">
-				<input type="text" class="text input-small" name="price" value="">
-			</div>
-		</div>
-		<div class="form-item">
-			<label class="item-label">规格<span class="check-tips">（用户密码不能少于6位）</span></label>
-			<div class="controls">
-				<input type="text" class="text input-large" name="username" value="">
-			</div>
-		</div>
-		<div class="form-item">
-			<label class="item-label">数量<span class="check-tips">（用户密码不能少于6位）</span></label>
-			<div class="controls">
-				<input type="text" class="text input-small" name="username" value="">
-			</div>
-		</div>
 
-		<div class="form-item">
-			<label class="item-label">首页推荐<span class="check-tips">（用户密码不能少于6位）</span></label>
-			<div class="controls">
-				<input type="text" class="text input-small" name="username" value="">
-			</div>
+	<!-- 标签页导航 -->
+	<div class="tab-wrap">
+		<ul class="tab-nav nav">
+			<li data-tab="tab1" class="current"><a href="javascript:void(0);">基本信息</a></li>
+			<li data-tab="tab2"><a href="javascript:void(0);">描述</a></li>
+		</ul>
+		<div class="tab-content">
+			<form action="{:U(update)}" method="post" class="form-horizontal">
+				<div id="tab1" class="tab-pane tab1 in">
+					<div class="form-item cf">
+						<label class="item-label">商品名称</label>
+						<div class="controls">
+							<input type="text" class="text input-large" name="name" value="">
+						</div>
+					</div>
+					<div class="form-item cf">
+						<label class="item-label">是否上架</label>
+						<div class="controls">
+							<label class="radio"><input type="radio" value="0" name="is_on_sale">是</label>
+							<label class="radio"><input type="radio" value="1" checked="" name="is_on_sale">否</label>
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">基本数据</label>
+						<div class="controls">
+							<div class="field-group">
+								<table>
+									<thead>
+										<tr>
+											<th>商品货号</th>
+											<th>市场价</th>
+											<th>销售价</th>
+											<th>邮费</th>
+											<th>库存</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><input class="text input-medium" name="_goods_no[0]" pattern="required" type="text" value=""></td>
+											<td><input class="text input-small" name="_goods_no[0]" pattern="required" type="text" value=""></td>
+											<td><input class="text input-small" name="_goods_no[0]" pattern="required" type="text" value=""></td>
+											<td><input class="text input-small" name="_goods_no[0]" pattern="required" type="text" value=""></td>
+											<td><input class="text input-small" name="_goods_no[0]" pattern="required" type="text" value="100"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-item">
+						<label class="item-label">附加促销信息</label>
+						<div class="controls">
+							<div class="field-group">
+								<table>
+									<thead>
+										<tr>
+											<th>购买成功增加积分</th>
+											<th>购买成功返金币</th>
+											<th>购买成功返金币</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><input class="text input-medium" name="_goods_no[0]" pattern="required" type="text" value=""></td>
+											<td><input class="text input-medium" name="_goods_no[0]" pattern="required" type="text" value=""></td>
+											<td><input class="text input-medium" name="_goods_no[0]" pattern="required" type="text" value=""></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-item">
+						<label class="item-label">规格</label>
+						<div class="controls">
+							<input type="text" class="text input-large" name="username" value="">
+						</div>
+					</div>
+
+					<div class="form-item">
+						<label class="item-label">首页推荐类型</label>
+						<div class="controls">
+							<label class="checkbox"><input type="checkbox" value="1" name="new">最新商品</label>
+							<label class="checkbox"><input type="checkbox" value="2" name="hot">热卖商品</label>
+							<label class="checkbox"><input type="checkbox" value="3" name="promote">特价商品</label>
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">图片</label>
+						<div class="controls">
+							<input type="file" id="upload_picture_image">
+							<input type="hidden" name="image" id="cover_id_image"/>
+							<div class="upload-img-box">
+							<notempty name="data[$field['name']]">
+								<div class="upload-pre-item"><img src="{$data[$field['name']]|get_cover='path'}"/></div>
+							</notempty>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div id="tab2" class="tab-pane tab2">
+					<div class="form-item">
+						<label class="item-label">商品描述</label>
+						<div class="controls">
+							<textarea name="{$field.name}">{$field.value}</textarea>
+							{:hook('adminArticleEdit', array('name'=>$field['name'],'value'=>$field['value']))}
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-item form-action cf">
+					<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">发布商品</button>
+					<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+					<button class="btn save-btn" url="{:U('article/autoSave')}" target-form="form-horizontal" id="autoSave">存草稿</button>
+				</div>
+			</form>
 		</div>
-
-		<div class="form-item">
-			<label class="item-label">图片<span class="check-tips">（用户密码不能少于6位）</span></label>
-			<div class="controls">
-				<input type="text" class="text input-small" name="username" value="">
-			</div>
-		</div>
-
-		<div class="form-item">
-			<label class="item-label">描述<span class="check-tips">（用户密码不能少于6位）</span></label>
-			<div class="controls">
-				<textarea name="{$field.name}">{$field.value}</textarea>
-				{:hook('adminArticleEdit', array('name'=>$field['name'],'value'=>$field['value']))}
-			</div>
-		</div>
+	</div>
 
 
 
 
-		<div class="form-item">
-			<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
-			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-			<button class="btn save-btn" url="{:U('article/autoSave')}" target-form="form-horizontal" id="autoSave">存草稿</button>
-		</div>
-	</form>
 </block>
 
 <block name="script">
-	<script type="text/javascript">
-		//导航高亮
-		highlight_subnav('{:U('Item/index')}');
-	</script>
+<script type="text/javascript" src="__STATIC__/js/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript">
+
+$('#submit').click(function(){
+	$('#form').submit();
+});
+
+
+//导航高亮
+highlight_subnav('{:U('Item/index')}');
+
+// 导航切换
+showTab();
+
+//上传图片
+/* 初始化上传插件 */
+$("#upload_picture_image").uploadify({
+		"height"          : 30,
+		"swf"             : "__STATIC__/js/uploadify/uploadify.swf",
+		"fileObjName"     : "download",
+		"buttonText"      : "上传图片",
+		"uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+		"width"           : 120,
+		'removeTimeout'	  : 1,
+		'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+		"onUploadSuccess" : uploadPicture{$field.name},
+		'onFallback' : function() {
+				alert('未检测到兼容版本的Flash.');
+		}
+	});
+function uploadPicture{$field.name}(file, data){
+	var data = $.parseJSON(data);
+	var src = '';
+	if(data.status){
+		$("#cover_id_image").val(data.id);
+		src = data.url || '__ROOT__' + data.path
+		$("#cover_id_image").parent().find('.upload-img-box').html(
+			'<div class="upload-pre-item"><img src="__ROOT__' + src + '"/></div>'
+		);
+	} else {
+		updateAlert(data.info);
+		setTimeout(function(){
+				$('#top-alert').find('button').click();
+				$(that).removeClass('disabled').prop('disabled',false);
+			},1500);
+	}
+}
+</script>
 </block>

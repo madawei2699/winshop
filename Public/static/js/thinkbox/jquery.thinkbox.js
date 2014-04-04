@@ -105,6 +105,7 @@ function includeCss(css, onload){
         }).appendTo("head");
 }
 
+
 /* 获取屏幕可视区域的大小和位置 */
 function viewport(){
     return {
