@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.10
+-- version 3.5.4
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2014 年 03 月 31 日 15:37
--- 服务器版本: 5.5.34
--- PHP 版本: 5.4.21
+-- 生成日期: 2014 年 04 月 14 日 04:51
+-- 服务器版本: 5.5.32
+-- PHP 版本: 5.4.19
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,42 +19,6 @@ SET time_zone = "+00:00";
 --
 -- 数据库: `winshop`
 --
-
--- --------------------------------------------------------
-
---
--- 表的结构 `winshop_action`
---
-
-CREATE TABLE IF NOT EXISTS `winshop_action` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `name` char(30) NOT NULL DEFAULT '' COMMENT '行为唯一标识',
-  `title` char(80) NOT NULL DEFAULT '' COMMENT '行为说明',
-  `remark` char(140) NOT NULL DEFAULT '' COMMENT '行为描述',
-  `rule` text NOT NULL COMMENT '行为规则',
-  `log` text NOT NULL COMMENT '日志规则',
-  `type` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '类型',
-  `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
-  `update_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表' AUTO_INCREMENT=12 ;
-
---
--- 转存表中的数据 `winshop_action`
---
-
-INSERT INTO `winshop_action` (`id`, `name`, `title`, `remark`, `rule`, `log`, `type`, `status`, `update_time`) VALUES
-(1, 'user_login', '用户登录', '积分+10，每天一次', 'table:member|field:score|condition:uid={$self} AND status>-1|rule:score+10|cycle:24|max:1;', '[user|get_nickname]在[time|time_format]登录了后台', 1, 1, 1387181220),
-(2, 'add_article', '发布文章', '积分+5，每天上限5次', 'table:member|field:score|condition:uid={$self}|rule:score+5|cycle:24|max:5', '', 2, 0, 1380173180),
-(3, 'review', '评论', '评论积分+1，无限制', 'table:member|field:score|condition:uid={$self}|rule:score+1', '', 2, 1, 1383285646),
-(4, 'add_document', '发表文档', '积分+10，每天上限5次', 'table:member|field:score|condition:uid={$self}|rule:score+10|cycle:24|max:5', '[user|get_nickname]在[time|time_format]发表了一篇文章。\r\n表[model]，记录编号[record]。', 2, 0, 1386139726),
-(5, 'add_document_topic', '发表讨论', '积分+5，每天上限10次', 'table:member|field:score|condition:uid={$self}|rule:score+5|cycle:24|max:10', '', 2, 0, 1383285551),
-(6, 'update_config', '更新配置', '新增或修改或删除配置', '', '', 1, 1, 1383294988),
-(7, 'update_model', '更新模型', '新增或修改模型', '', '', 1, 1, 1383295057),
-(8, 'update_attribute', '更新属性', '新增或更新或删除属性', '', '', 1, 1, 1383295963),
-(9, 'update_channel', '更新导航', '新增或修改或删除导航', '', '', 1, 1, 1383296301),
-(10, 'update_menu', '更新菜单', '新增或修改或删除菜单', '', '', 1, 1, 1383296392),
-(11, 'update_category', '更新分类', '新增或修改或删除分类', '', '', 1, 1, 1383296765);
 
 -- --------------------------------------------------------
 
@@ -76,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `winshop_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表' AUTO_INCREMENT=30 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表' AUTO_INCREMENT=44 ;
 
 --
 -- 转存表中的数据 `winshop_action_log`
@@ -111,7 +75,21 @@ INSERT INTO `winshop_action_log` (`id`, `action_id`, `user_id`, `action_ip`, `mo
 (26, 10, 1, 2130706433, 'Menu', 125, '操作url：/winshop/index.php?s=/Admin/Menu/edit.html', 1, 1396143726),
 (27, 10, 1, 2130706433, 'Menu', 129, '操作url：/winshop/index.php?s=/Admin/Menu/add.html', 1, 1396144718),
 (28, 10, 1, 2130706433, 'Menu', 130, '操作url：/winshop/index.php?s=/Admin/Menu/add.html', 1, 1396144779),
-(29, 10, 1, 2130706433, 'Menu', 132, '操作url：/winshop/index.php?s=/Admin/Menu/edit.html', 1, 1396144848);
+(29, 10, 1, 2130706433, 'Menu', 132, '操作url：/winshop/index.php?s=/Admin/Menu/edit.html', 1, 1396144848),
+(30, 1, 1, 2130706433, 'member', 1, 'admin在2014-04-01 08:24登录了后台', 1, 1396311887),
+(31, 1, 1, 2130706433, 'member', 1, 'admin在2014-04-01 11:04登录了后台', 1, 1396321453),
+(32, 1, 1, 2130706433, 'member', 1, 'admin在2014-04-02 15:48登录了后台', 1, 1396424909),
+(33, 7, 1, 2130706433, 'model', 4, '操作url：/winshop/index.php?s=/Admin/Model/update.html', 1, 1396427347),
+(34, 7, 1, 2130706433, 'model', 4, '操作url：/winshop/index.php?s=/Admin/Model/update.html', 1, 1396427790),
+(35, 8, 1, 2130706433, 'attribute', 41, '操作url：/winshop/index.php?s=/Admin/Attribute/update.html', 1, 1396428241),
+(36, 8, 1, 2130706433, 'attribute', 42, '操作url：/winshop/index.php?s=/Admin/Model/generate.html', 1, 1396428633),
+(37, 8, 1, 2130706433, 'attribute', 43, '操作url：/winshop/index.php?s=/Admin/Model/generate.html', 1, 1396428633),
+(38, 8, 1, 2130706433, 'attribute', 44, '操作url：/winshop/index.php?s=/Admin/Model/generate.html', 1, 1396428633),
+(39, 8, 1, 2130706433, 'attribute', 45, '操作url：/winshop/index.php?s=/Admin/Model/generate.html', 1, 1396428633),
+(40, 8, 1, 2130706433, 'attribute', 46, '操作url：/winshop/index.php?s=/Admin/Model/generate.html', 1, 1396428633),
+(41, 8, 1, 2130706433, 'attribute', 47, '操作url：/winshop/index.php?s=/Admin/Model/generate.html', 1, 1396428633),
+(42, 8, 1, 2130706433, 'attribute', 48, '操作url：/winshop/index.php?s=/Admin/Model/generate.html', 1, 1396428633),
+(43, 8, 1, 2130706433, 'attribute', 49, '操作url：/winshop/index.php?s=/Admin/Model/generate.html', 1, 1396428633);
 
 -- --------------------------------------------------------
 
@@ -145,6 +123,32 @@ INSERT INTO `winshop_addons` (`id`, `name`, `title`, `description`, `status`, `c
 (5, 'Editor', '前台编辑器', '用于增强整站长文本的输入和显示', 1, '{"editor_type":"2","editor_wysiwyg":"2","editor_height":"300px","editor_resize_type":"1"}', 'thinkphp', '0.1', 1379830910, 0),
 (6, 'Attachment', '附件', '用于文档模型上传附件', 1, 'null', 'thinkphp', '0.1', 1379842319, 1),
 (9, 'SocialComment', '通用社交化评论', '集成了各种社交化评论插件，轻松集成到系统中。', 1, '{"comment_type":"1","comment_uid_youyan":"","comment_short_name_duoshuo":"","comment_data_list_duoshuo":""}', 'thinkphp', '0.1', 1380273962, 0);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `winshop_admin`
+--
+
+CREATE TABLE IF NOT EXISTS `winshop_admin` (
+  `userid` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `username` varchar(50) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `role_id` smallint(5) NOT NULL,
+  `last_ip` varchar(15) NOT NULL,
+  `last_time` int(10) NOT NULL DEFAULT '0',
+  `email` varchar(50) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`userid`),
+  UNIQUE KEY `user_name` (`username`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='管理员' AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `winshop_admin`
+--
+
+INSERT INTO `winshop_admin` (`userid`, `username`, `password`, `role_id`, `last_ip`, `last_time`, `email`, `status`) VALUES
+(1, 'admin', 'dc2c8c2157bdb6300fef7420c3790a3e', 1, '127.0.0.1', 1396420346, 'admin@admin.com', 1);
 
 -- --------------------------------------------------------
 
@@ -200,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `winshop_attribute` (
   `auto_type` varchar(25) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `model_id` (`model_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='模型属性表' AUTO_INCREMENT=33 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='模型属性表' AUTO_INCREMENT=50 ;
 
 --
 -- 转存表中的数据 `winshop_attribute`
@@ -238,7 +242,8 @@ INSERT INTO `winshop_attribute` (`id`, `name`, `title`, `field`, `type`, `value`
 (29, 'template', '详情页显示模板', 'varchar(100) NOT NULL ', 'string', '', '', 1, '', 3, 0, 1, 1383896429, 1383891252, '', 0, '', '', '', 0, ''),
 (30, 'file_id', '文件ID', 'int(10) unsigned NOT NULL ', 'file', '0', '需要函数处理', 1, '', 3, 0, 1, 1383896415, 1383891252, '', 0, '', '', '', 0, ''),
 (31, 'download', '下载次数', 'int(10) unsigned NOT NULL ', 'num', '0', '', 1, '', 3, 0, 1, 1383896380, 1383891252, '', 0, '', '', '', 0, ''),
-(32, 'size', '文件大小', 'bigint(20) unsigned NOT NULL ', 'num', '0', '单位bit', 1, '', 3, 0, 1, 1383896371, 1383891252, '', 0, '', '', '', 0, '');
+(32, 'size', '文件大小', 'bigint(20) unsigned NOT NULL ', 'num', '0', '单位bit', 1, '', 3, 0, 1, 1383896371, 1383891252, '', 0, '', '', '', 0, ''),
+(41, 'item_id', '商品ID', 'int(10) UNSIGNED NOT NULL', 'num', '0', '商品ID', 0, '', 4, 0, 1, 1396428241, 1396428241, '', 3, '', 'regex', '', 3, 'function');
 
 -- --------------------------------------------------------
 
@@ -832,6 +837,7 @@ INSERT INTO `winshop_hooks` (`id`, `name`, `description`, `type`, `update_time`,
 
 CREATE TABLE IF NOT EXISTS `winshop_item` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `uid` int(10) NOT NULL DEFAULT '0' COMMENT '发布者UID',
   `name` varchar(255) NOT NULL COMMENT '商品名称',
   `intro` text COMMENT '商品详情',
   `number` int(5) NOT NULL DEFAULT '0' COMMENT '库存量',
@@ -884,7 +890,7 @@ CREATE TABLE IF NOT EXISTS `winshop_member` (
 --
 
 INSERT INTO `winshop_member` (`uid`, `nickname`, `sex`, `birthday`, `qq`, `score`, `login`, `reg_ip`, `reg_time`, `last_login_ip`, `last_login_time`, `status`) VALUES
-(1, 'admin', 0, '0000-00-00', '', 10, 5, 0, 1394589845, 2130706433, 1394604119, 1);
+(1, 'admin', 0, '0000-00-00', '', 30, 10, 0, 1394589845, 2130706433, 1397442697, 1);
 
 -- --------------------------------------------------------
 
@@ -1062,7 +1068,7 @@ CREATE TABLE IF NOT EXISTS `winshop_model` (
   `status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '状态',
   `engine_type` varchar(25) NOT NULL DEFAULT 'MyISAM' COMMENT '数据库引擎',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='文档模型表' AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='文档模型表' AUTO_INCREMENT=6 ;
 
 --
 -- 转存表中的数据 `winshop_model`
@@ -1071,7 +1077,8 @@ CREATE TABLE IF NOT EXISTS `winshop_model` (
 INSERT INTO `winshop_model` (`id`, `name`, `title`, `extend`, `relation`, `need_pk`, `field_sort`, `field_group`, `attribute_list`, `template_list`, `template_add`, `template_edit`, `list_grid`, `list_row`, `search_key`, `search_list`, `create_time`, `update_time`, `status`, `engine_type`) VALUES
 (1, 'document', '基础文档', 0, '', 1, '{"1":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22"]}', '1:基础', '', '', '', '', 'id:编号\r\ntitle:标题:article/index?cate_id=[category_id]&pid=[id]\r\ntype|get_document_type:类型\r\nlevel:优先级\r\nupdate_time|time_format:最后更新\r\nstatus_text:状态\r\nview:浏览\r\nid:操作:[EDIT]&cate_id=[category_id]|编辑,article/setstatus?status=-1&ids=[id]|删除', 0, '', '', 1383891233, 1384507827, 1, 'MyISAM'),
 (2, 'article', '文章', 1, '', 1, '{"1":["3","24","2","5"],"2":["9","13","19","10","12","16","17","26","20","14","11","25"]}', '1:基础,2:扩展', '', '', '', '', 'id:编号\r\ntitle:标题:article/edit?cate_id=[category_id]&id=[id]\r\ncontent:内容', 0, '', '', 1383891243, 1387260622, 1, 'MyISAM'),
-(3, 'download', '下载', 1, '', 1, '{"1":["3","28","30","32","2","5","31"],"2":["13","10","27","9","12","16","17","19","11","20","14","29"]}', '1:基础,2:扩展', '', '', '', '', 'id:编号\r\ntitle:标题', 0, '', '', 1383891252, 1387260449, 1, 'MyISAM');
+(3, 'download', '下载', 1, '', 1, '{"1":["3","28","30","32","2","5","31"],"2":["13","10","27","9","12","16","17","19","11","20","14","29"]}', '1:基础,2:扩展', '', '', '', '', 'id:编号\r\ntitle:标题', 0, '', '', 1383891252, 1387260449, 1, 'MyISAM'),
+(4, 'item', '商品', 0, '', 1, '', '1:基本信息,2:描述信息,3:营销选项', '', '', '', '', 'id:编号\r\ntitle:标题', 10, '', '', 1396427347, 1396428657, 1, 'MyISAM');
 
 -- --------------------------------------------------------
 
@@ -1088,14 +1095,17 @@ CREATE TABLE IF NOT EXISTS `winshop_picture` (
   `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- 转存表中的数据 `winshop_picture`
 --
 
 INSERT INTO `winshop_picture` (`id`, `path`, `url`, `md5`, `sha1`, `status`, `create_time`) VALUES
-(1, '/Uploads/Picture/2014-03-30/53377d2cccd5f.png', '', 'f4a5a6ae9aa965ed10971d57e3dbc9ba', 'af0eb640a8c57975c3d2daca6aa88ad9745bb9a3', 1, 1396145452);
+(1, '/Uploads/Picture/2014-03-30/53377d2cccd5f.png', '', 'f4a5a6ae9aa965ed10971d57e3dbc9ba', 'af0eb640a8c57975c3d2daca6aa88ad9745bb9a3', 1, 1396145452),
+(2, '/Uploads/Picture/2014-04-02/533bda4a612db.jpg', '', '7baccde02f083734793cf6a0daf6c03e', 'fd3809d9e53bb068b2625e52b729073899608ffd', 1, 1396431434),
+(3, '/Uploads/Picture/2014-04-02/533bda4f44e33.jpg', '', '3c992f42c3b3fdb03907151ddcea43e8', 'a57418281ffd57d28eea7c218d1222359d69d739', 1, 1396431439),
+(4, '/Uploads/Picture/2014-04-14/534b48a67e491.jpg', '', '34b38ec1ece847d3f7a058eaf29aba0e', '5ec90b45909d46524de2c84c41f0e5fe81573288', 1, 1397442726);
 
 -- --------------------------------------------------------
 
@@ -1160,7 +1170,7 @@ CREATE TABLE IF NOT EXISTS `winshop_ucenter_member` (
 --
 
 INSERT INTO `winshop_ucenter_member` (`id`, `username`, `password`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `status`) VALUES
-(1, 'admin', 'd9f65d23b4429c44536ae1a0483bde8c', 'yuwenhui1986@163.com', '', 1394589845, 2130706433, 1394604119, 2130706433, 1394589845, 1);
+(1, 'admin', 'd9f65d23b4429c44536ae1a0483bde8c', 'yuwenhui1986@163.com', '', 1394589845, 2130706433, 1397442697, 2130706433, 1394589845, 1);
 
 -- --------------------------------------------------------
 
