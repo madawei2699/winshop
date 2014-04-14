@@ -115,7 +115,7 @@
 						<label class="item-label">商品描述</label>
 						<div class="controls">
 							<textarea name="{$field.name}">{$field.value}</textarea>
-							{:hook('adminArticleEdit', array('name'=>$field['name'],'value'=>$field['value']))}
+							{:hook('adminArticleEdit', array('name'=>'intro','value'=>$field['value']))}
 						</div>
 					</div>
 				</div>
