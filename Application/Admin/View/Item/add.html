@@ -9,10 +9,10 @@
 	<div class="tab-wrap">
 		<ul class="tab-nav nav">
 			<li data-tab="tab1" class="current"><a href="javascript:void(0);">基本信息</a></li>
-			<li data-tab="tab2"><a href="javascript:void(0);">描述</a></li>
+			<li data-tab="tab2"><a href="javascript:void(0);">商品描述</a></li>
 		</ul>
 		<div class="tab-content">
-			<form action="{:U(update)}" method="post" class="form-horizontal">
+			<form id="form" action="{:U(update)}" method="post" class="form-horizontal">
 				<div id="tab1" class="tab-pane tab1 in">
 					<div class="form-item cf">
 						<label class="item-label">商品名称</label>
@@ -23,32 +23,29 @@
 					<div class="form-item cf">
 						<label class="item-label">是否上架</label>
 						<div class="controls">
-							<label class="radio"><input type="radio" value="0" name="is_on_sale">是</label>
-							<label class="radio"><input type="radio" value="1" checked="" name="is_on_sale">否</label>
+							<label class="radio"><input type="radio" value="1" name="is_on_sale" checked="checked">是</label>
+							<label class="radio"><input type="radio" value="0" name="is_on_sale">否</label>
 						</div>
 					</div>
 					<div class="form-item">
-						<label class="item-label">基本数据</label>
+						<label class="item-label">基本信息</label>
 						<div class="controls">
 							<div class="field-group">
 								<table>
 									<thead>
 										<tr>
 											<th>商品货号</th>
-											<th>市场价</th>
-											<th>销售价</th>
+											<th>价格</th>
 											<th>邮费</th>
 											<th>库存</th>
-
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<td><input class="text input-medium" name="_goods_no[0]" pattern="required" type="text" value=""></td>
-											<td><input class="text input-small" name="_goods_no[0]" pattern="required" type="text" value=""></td>
-											<td><input class="text input-small" name="_goods_no[0]" pattern="required" type="text" value=""></td>
-											<td><input class="text input-small" name="_goods_no[0]" pattern="required" type="text" value=""></td>
-											<td><input class="text input-small" name="_goods_no[0]" pattern="required" type="text" value="100"></td>
+											<td><input class="text input-medium" name="number" type="text" value="{$item['number']}"></td>
+											<td><input class="text input-small" name="price" type="text" value=""> (元)</td>
+											<td><input class="text input-small" name="transport" type="text" value=""> (元)</td>
+											<td><input class="text input-small" name="stock" type="text" value="100"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -57,22 +54,21 @@
 					</div>
 
 					<div class="form-item">
-						<label class="item-label">附加促销信息</label>
+						<label class="item-label">促销信息</label>
 						<div class="controls">
 							<div class="field-group">
 								<table>
 									<thead>
 										<tr>
-											<th>购买成功增加积分</th>
-											<th>购买成功返金币</th>
-											<th>购买成功返金币</th>
+											<th>购买成功返积分</th>
+											<th>可使用优惠券金额</th>
+											<th></th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<td><input class="text input-medium" name="_goods_no[0]" pattern="required" type="text" value=""></td>
-											<td><input class="text input-medium" name="_goods_no[0]" pattern="required" type="text" value=""></td>
-											<td><input class="text input-medium" name="_goods_no[0]" pattern="required" type="text" value=""></td>
+											<td><input class="text input-medium" name="score" type="text" value="" placeholder="默认不返积分"></td>
+											<td><input class="text input-medium" name="coupon" type="text" value="" placeholder="默认不使用优惠券"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -83,23 +79,23 @@
 					<div class="form-item">
 						<label class="item-label">规格</label>
 						<div class="controls">
-							<input type="text" class="text input-large" name="username" value="">
+							<input type="text" class="text input-large" name="spec" value="">
 						</div>
 					</div>
 
 					<div class="form-item">
-						<label class="item-label">首页推荐类型</label>
+						<label class="item-label">推荐类型</label>
 						<div class="controls">
-							<label class="checkbox"><input type="checkbox" value="1" name="new">最新商品</label>
-							<label class="checkbox"><input type="checkbox" value="2" name="hot">热卖商品</label>
-							<label class="checkbox"><input type="checkbox" value="3" name="promote">特价商品</label>
+							<label class="checkbox"><input type="checkbox" value="1" name="is_new" checked="checked">最新商品</label>
+							<label class="checkbox"><input type="checkbox" value="1" name="is_hot">热卖商品</label>
+							<label class="checkbox"><input type="checkbox" value="1" name="is_promote">特价商品</label>
 						</div>
 					</div>
 					<div class="form-item">
 						<label class="item-label">图片</label>
 						<div class="controls">
 							<input type="file" id="upload_picture_image">
-							<input type="hidden" name="image" id="cover_id_image"/>
+							<input type="hidden" name="thumb" id="cover_id_image"/>
 							<div class="upload-img-box">
 							<notempty name="data[$field['name']]">
 								<div class="upload-pre-item"><img src="{$data[$field['name']]|get_cover='path'}"/></div>
@@ -114,7 +110,7 @@
 					<div class="form-item">
 						<label class="item-label">商品描述</label>
 						<div class="controls">
-							<textarea name="{$field.name}">{$field.value}</textarea>
+							<textarea name="intro">{$item.intro}</textarea>
 							{:hook('adminArticleEdit', array('name'=>'intro','value'=>$field['value']))}
 						</div>
 					</div>
@@ -124,7 +120,7 @@
 				<div class="form-item form-action cf">
 					<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">发布商品</button>
 					<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-					<button class="btn save-btn" url="{:U('article/autoSave')}" target-form="form-horizontal" id="autoSave">存草稿</button>
+					<button class="btn save-btn" url="{:U('item/autoSave')}" target-form="form-horizontal" id="autoSave">存草稿</button>
 				</div>
 			</form>
 		</div>

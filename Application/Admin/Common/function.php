@@ -397,3 +397,18 @@ function remove_all_dir($dirname){
 	$dir->close();
 	return rmdir($dirname);
 }
+
+
+
+
+/**
+ * 生成商品编号
+ * 格式：1404306C49
+ * @author Jacky.Liu <273984177@qq.com>
+ */
+function create_item_sn($len) {
+	$uniqid = strtoupper(md5(uniqid()));
+	$uniqid = substr($uniqid, 0, $len);
+
+	return date('Ymd').$uniqid;
+}

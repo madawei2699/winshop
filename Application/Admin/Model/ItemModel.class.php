@@ -20,6 +20,7 @@ class ItemModel extends Model{
 	protected $_validate = array(
 		array('name', 'require', '商品名称不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
 		array('name', '1,80', '商品名称长度不能超过80个字符', self::MUST_VALIDATE, 'length', self::MODEL_BOTH),
+		array('price', 'require', '商品价格不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
 		array('intro', 'require', '商品描述不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
 		array('create_time', '/^\d{4,4}-\d{1,2}-\d{1,2}(\s\d{1,2}:\d{1,2}(:\d{1,2})?)?$/', '日期格式不合法,请使用"年-月-日 时:分"格式,全部为数字', self::VALUE_VALIDATE  , 'regex', self::MODEL_BOTH),
 	);
@@ -30,7 +31,7 @@ class ItemModel extends Model{
 		array('name', 'htmlspecialchars', self::MODEL_BOTH, 'function'),
 		array('intro', 'htmlspecialchars', self::MODEL_BOTH, 'function'),
 
-		array('create_time', NOW_TIME, self::MODEL_BOTH, 'callback'),
+		array('create_time', 'getCreateTime', self::MODEL_BOTH, 'callback'),
 		array('update_time', NOW_TIME, self::MODEL_BOTH),
 	);
 
@@ -50,6 +51,8 @@ class ItemModel extends Model{
 		$map = array_merge($this->listMap($category, $status), $map);
 		return $this->field($field)->where($map)->order($order)->limit($limit)->select();
 	}
+
+
 
 	/**
 	 * 计算列表总数
@@ -71,7 +74,7 @@ class ItemModel extends Model{
 		/* 获取基础数据 */
 		$info = $this->field(true)->find($id);
 		if(!(is_array($info) || 1 !== $info['status'])){
-			$this->error = '文档被禁用或已删除！';
+			$this->error = '商品被禁用或已删除！';
 			return false;
 		}
 
@@ -117,14 +120,16 @@ class ItemModel extends Model{
 		}
 
 		/* 添加或新增扩展内容 */
-		$logic = $this->logic($data['model_id']);
-		if(!$logic->update($id)){
-			if(isset($id)){ //新增失败，删除基础数据
-				$this->delete($id);
-			}
-			$this->error = $logic->getError();
-			return false;
-		}
+
+		// $logic = $this->logic($data['model_id']);
+		// if(!$logic->update($id)){
+		// 	if(isset($id)){
+		// 		$this->delete($id);
+		// 	}
+		// 	$this->error = $logic->getError();
+		// 	return false;
+		// }
+
 
 
 		//行为记录
@@ -242,7 +247,7 @@ class ItemModel extends Model{
 	 * @author huajie <banhuajie@163.com>
 	 */
 	protected function getCreateTime(){
-		$create_time    =   I('post.create_time');
+		$create_time = I('post.create_time');
 		return $create_time?strtotime($create_time):NOW_TIME;
 	}
 
@@ -458,7 +463,6 @@ class ItemModel extends Model{
 			array('description', '1,140', '简介长度不能超过140个字符', self::VALUE_VALIDATE, 'length', self::MODEL_BOTH),
 			array('category_id', 'require', '分类不能为空', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
 			array('category_id', 'checkCategory', '该分类不允许发布内容', self::EXISTS_VALIDATE , 'callback', self::MODEL_UPDATE),
-			array('model_id,category_id', 'checkModel', '该分类没有绑定当前模型', self::MUST_VALIDATE , 'callback', self::MODEL_INSERT),
 			array('deadline', '/^\d{4,4}-\d{1,2}-\d{1,2}(\s\d{1,2}:\d{1,2}(:\d{1,2})?)?$/', '日期格式不合法,请使用"年-月-日 时:分"格式,全部为数字', self::VALUE_VALIDATE  , 'regex', self::MODEL_BOTH),
 			array('create_time', '/^\d{4,4}-\d{1,2}-\d{1,2}(\s\d{1,2}:\d{1,2}(:\d{1,2})?)?$/', '日期格式不合法,请使用"年-月-日 时:分"格式,全部为数字', self::VALUE_VALIDATE  , 'regex', self::MODEL_BOTH),
 		);

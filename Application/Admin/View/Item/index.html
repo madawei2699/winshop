@@ -23,13 +23,13 @@
 			<div class="btn-group">
 				<a class="btn item_add" href="{:U('Item/add')}">新 增</a>
 			</div>
-			<button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>1))}">上 架</button>
-			<button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>0))}">下 架</button>
-			<button class="btn ajax-post" target-form="ids" url="{:U("Article/move")}">推 荐</button>
-			<button class="btn ajax-post" target-form="ids" url="{:U("Article/copy")}">热 卖</button>
-			<button class="btn ajax-post confirm" target-form="ids" url="{:U("Article/setStatus",array("status"=>-1))}">删 除</button>
+			<button class="btn ajax-post" target-form="ids" url="{:U('Item/setStatus',array('status'=>1))}">上 架</button>
+			<button class="btn ajax-post" target-form="ids" url="{:U('Item/setStatus',array('status' =>0))}">下 架</button>
+			<button class="btn ajax-post" target-form="ids" url="{:U('Item/setHot')}">热 卖</button>
+			<button class="btn ajax-post" target-form="ids" url="{:U('Item/setPromote')}">特 价</button>
+			<button class="btn ajax-post confirm" target-form="ids" url="{:U('Item/setStatus',array('status'=>-1))}">删 除</button>
 			<!-- <button class="btn document_add" url="{:U('article/batchOperate',array('cate_id'=>$cate_id,'pid'=>I('pid',0)))}">导入</button> -->
-			<button class="btn list_sort" url="{:U('sort',array('cate_id'=>$cate_id,'pid'=>I('pid',0)),'')}">排序</button>
+			<button class="btn list_sort" url="{:U('sort',array('cate_id' => $cate_id,'pid' => I('pid',0)),'')}">排序</button>
 		</div>
 
 		<!-- 高级搜索 -->
@@ -71,23 +71,35 @@
 			<!-- 表头 -->
 			<thead>
 				<tr>
-					<th class="row-selected row-selected">
-						<input class="check-all" type="checkbox">
-					</th>
-					<volist name="list_grids" id="field">
-						<th>{$field.title}</th>
-					</volist>
+					<th class="row-selected row-selected"><input class="check-all" type="checkbox"></th>
+					<th>商品编号</th>
+					<th>商品名称</th>
+					<th>价格</th>
+					<th>运费</th>
+					<th>库存</th>
+					<th>规格</th>
+					<th width="100">分类</th>
+					<th width="130">操作</th>
 				</tr>
 			</thead>
 
 			<!-- 列表 -->
 			<tbody>
-				<volist name="list" id="data">
+				<volist name="list" id="vo">
 					<tr>
 						<td><input class="ids" type="checkbox" value="{$data['id']}" name="ids[]"></td>
-						<volist name="list_grids" id="grid">
-							<td>{:get_list_field($data,$grid,$model_list)}</td>
-						</volist>
+						<td><a href="{:U('view?cate_id='.$vo['goods_category_id'].'&id='.$vo['id'])}">{$vo.number}</a></td>
+						<td><a href="{:U('view?cate_id='.$vo['goods_category_id'].'&id='.$vo['id'])}">{$vo.name}</a></td>
+						<td>{$vo.price}</td>
+						<td>{$vo.transport}</td>
+						<td>{$vo.stock}</td>
+						<td width="130">{$vo.spec}</td>
+						<td>{$vo.goods_standard}</td>
+						<td>
+							<a href="{:U('edit?cate_id='.$vo['goods_category_id'].'&id='.$vo['id'])}">[编辑]</a>
+							<a href="{:U('setStatus?ids='.$vo['id'].'&status='.abs(1-$vo['status']))}" class="ajax-get">[{$vo.status_text}]</a>
+							<a href="{:U('setStatus?status=-1&ids='.$vo['id'])}" class="confirm ajax-get">[删除]</a>
+						</td>
 					</tr>
 				</volist>
 			</tbody>

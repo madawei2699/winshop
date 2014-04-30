@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2014 年 04 月 30 日 10:41
+-- 生成日期: 2014 年 04 月 30 日 17:44
 -- 服务器版本: 5.5.32
 -- PHP 版本: 5.4.19
 
@@ -593,7 +593,7 @@ CREATE TABLE IF NOT EXISTS `winshop_category` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_name` (`name`),
   KEY `pid` (`pid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='分类表' AUTO_INCREMENT=39 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='分类表' AUTO_INCREMENT=41 ;
 
 --
 -- 转存表中的数据 `winshop_category`
@@ -601,7 +601,9 @@ CREATE TABLE IF NOT EXISTS `winshop_category` (
 
 INSERT INTO `winshop_category` (`id`, `name`, `title`, `pid`, `sort`, `list_row`, `meta_title`, `keywords`, `description`, `template_index`, `template_lists`, `template_detail`, `template_edit`, `model`, `type`, `link_id`, `allow_publish`, `display`, `reply`, `check`, `reply_model`, `extend`, `create_time`, `update_time`, `status`, `icon`) VALUES
 (1, 'blog', '博客', 0, 0, 10, '', '', '', '', '', '', '', '2', '2,1', 0, 0, 1, 0, 0, '1', '', 1379474947, 1382701539, 1, 0),
-(2, 'default_blog', '默认分类', 1, 1, 10, '', '', '', '', '', '', '', '2', '2,1,3', 0, 1, 1, 0, 1, '1', '', 1379475028, 1386839751, 1, 31);
+(2, 'default_blog', '公司介绍', 1, 1, 10, '', '', '', '', '', '', '', '2', '2,1,3', 0, 1, 1, 0, 1, '1', '', 1379475028, 1398859757, 1, 31),
+(39, 'product', '商品', 0, 0, 10, '', '', '', '', '', '', '', '', '', 0, 1, 1, 1, 0, '', '', 1398859774, 1398859774, 1, 0),
+(40, 'tujidan', '土鸡蛋', 39, 0, 10, '', '', '', '', '', '', '', '', '', 0, 1, 1, 1, 0, '', '', 1398859793, 1398859793, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -676,7 +678,7 @@ INSERT INTO `winshop_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `
 (22, 'AUTH_CONFIG', 3, 'Auth配置', 4, '', '自定义Auth.class.php类配置', 1379409310, 1379409564, 1, 'AUTH_ON:1\r\nAUTH_TYPE:2', 8),
 (23, 'OPEN_DRAFTBOX', 4, '是否开启草稿功能', 2, '0:关闭草稿功能\r\n1:开启草稿功能\r\n', '新增文章时的草稿功能配置', 1379484332, 1379484591, 1, '1', 1),
 (24, 'DRAFT_AOTOSAVE_INTERVAL', 0, '自动保存草稿时间', 2, '', '自动保存草稿的时间间隔，单位：秒', 1379484574, 1386143323, 1, '60', 2),
-(25, 'LIST_ROWS', 0, '后台每页记录数', 2, '', '后台数据每页显示记录数', 1379503896, 1380427745, 1, '10', 10),
+(25, 'LIST_ROWS', 0, '后台每页记录数', 2, '', '后台数据每页显示记录数', 1379503896, 1380427745, 1, '4', 10),
 (26, 'USER_ALLOW_REGISTER', 4, '是否允许用户注册', 3, '0:关闭注册\r\n1:允许注册', '是否开放用户注册', 1379504487, 1379504580, 1, '1', 3),
 (27, 'CODEMIRROR_THEME', 4, '预览插件的CodeMirror主题', 4, '3024-day:3024 day\r\n3024-night:3024 night\r\nambiance:ambiance\r\nbase16-dark:base16 dark\r\nbase16-light:base16 light\r\nblackboard:blackboard\r\ncobalt:cobalt\r\neclipse:eclipse\r\nelegant:elegant\r\nerlang-dark:erlang-dark\r\nlesser-dark:lesser-dark\r\nmidnight:midnight', '详情见CodeMirror官网', 1379814385, 1384740813, 1, 'ambiance', 3),
 (28, 'DATA_BACKUP_PATH', 1, '数据库备份根路径', 4, '', '路径必须以 / 结尾', 1381482411, 1381482411, 1, './Data/', 5),
@@ -842,15 +844,17 @@ CREATE TABLE IF NOT EXISTS `winshop_item` (
   `uid` int(10) NOT NULL DEFAULT '0' COMMENT '发布者UID',
   `name` varchar(255) NOT NULL COMMENT '商品名称',
   `intro` text COMMENT '商品详情',
-  `number` int(5) NOT NULL DEFAULT '0' COMMENT '库存量',
+  `number` varchar(50) NOT NULL COMMENT '商品编号',
   `price` decimal(8,2) NOT NULL DEFAULT '0.00' COMMENT '商品价格',
   `transport` decimal(8,2) NOT NULL DEFAULT '0.00' COMMENT '运费',
-  `keyword` varchar(255) NOT NULL DEFAULT '' COMMENT '关键字',
-  `is_del` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0为已删除',
+  `stock` int(10) unsigned NOT NULL DEFAULT '100' COMMENT '库存',
+  `spec` varchar(255) NOT NULL COMMENT '规格',
+  `credit` int(5) NOT NULL COMMENT '购物返积分数',
+  `tag` varchar(255) NOT NULL DEFAULT '' COMMENT '关键字',
   `is_new` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1为新品',
   `is_hot` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1为热销',
   `is_promote` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1为特价',
-  `is_on_sale` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0为下架，1为上架',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态：0-下架，1-上架，-1-已删除',
   `is_set_image` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否已设置图片',
   `is_lock` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否锁定，1为锁定',
   `thumb` varchar(255) NOT NULL DEFAULT '' COMMENT '缩略图',
@@ -862,7 +866,18 @@ CREATE TABLE IF NOT EXISTS `winshop_item` (
   PRIMARY KEY (`id`),
   KEY `viewnum` (`viewnum`),
   KEY `update_time` (`update_time`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- 转存表中的数据 `winshop_item`
+--
+
+INSERT INTO `winshop_item` (`id`, `uid`, `name`, `intro`, `number`, `price`, `transport`, `stock`, `spec`, `credit`, `tag`, `is_new`, `is_hot`, `is_promote`, `status`, `is_set_image`, `is_lock`, `thumb`, `viewnum`, `favnum`, `order`, `create_time`, `update_time`) VALUES
+(1, 1, '乌鸡蛋', '乌鸡蛋乌鸡蛋乌鸡蛋乌鸡蛋乌鸡蛋乌鸡蛋', '0', 500.00, 36.95, 100, '', 0, '', 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 1398857426, 1398857426),
+(2, 1, '乌鸡土鸡蛋', '方式的方式的放到方式方式的方式的方式的放方式发生地方第三方发生地方', '2014049', 39.60, 5.00, 100, '', 0, '', 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 1398857925, 1398857925),
+(3, 1, '但是但是', '方式的方式的反倒是', '1404306DCF', 3065.00, 15.00, 100, '', 0, '', 0, 0, 0, 1, 0, 0, '', 0, 0, 0, 1398858183, 1398858183),
+(4, 1, '反倒是反倒是', '反倒是反倒是反倒是方式的', '1404300B50', 3026.00, 12.00, 100, '', 0, '', 1, 0, 0, 1, 0, 0, '', 0, 0, 0, 1398858244, 1398858244),
+(5, 1, '反倒是反倒是方式的', '反倒是反倒是方式的', '201404303A08', 0.00, 0.00, 100, '24枚/盒', 0, '', 1, 0, 0, 1, 0, 0, '', 0, 0, 0, 1398858315, 1398858315);
 
 -- --------------------------------------------------------
 
@@ -892,7 +907,7 @@ CREATE TABLE IF NOT EXISTS `winshop_member` (
 --
 
 INSERT INTO `winshop_member` (`uid`, `nickname`, `sex`, `birthday`, `qq`, `score`, `login`, `reg_ip`, `reg_time`, `last_login_ip`, `last_login_time`, `status`) VALUES
-(1, 'admin', 0, '0000-00-00', '', 30, 11, 0, 1394589845, 2130706433, 1398827428, 1);
+(1, 'admin', 0, '0000-00-00', '', 30, 12, 0, 1394589845, 2130706433, 1398856787, 1);
 
 -- --------------------------------------------------------
 
@@ -1173,7 +1188,7 @@ CREATE TABLE IF NOT EXISTS `winshop_ucenter_member` (
 --
 
 INSERT INTO `winshop_ucenter_member` (`id`, `username`, `password`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `status`) VALUES
-(1, 'admin', 'd9f65d23b4429c44536ae1a0483bde8c', 'yuwenhui1986@163.com', '', 1394589845, 2130706433, 1398827428, 2130706433, 1394589845, 1);
+(1, 'admin', 'd9f65d23b4429c44536ae1a0483bde8c', 'yuwenhui1986@163.com', '', 1394589845, 2130706433, 1398856787, 2130706433, 1394589845, 1);
 
 -- --------------------------------------------------------
 
