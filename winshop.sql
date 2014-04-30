@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2014 年 04 月 14 日 04:51
+-- 生成日期: 2014 年 04 月 30 日 10:41
 -- 服务器版本: 5.5.32
 -- PHP 版本: 5.4.19
 
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `winshop_addons` (
 --
 
 INSERT INTO `winshop_addons` (`id`, `name`, `title`, `description`, `status`, `config`, `author`, `version`, `create_time`, `has_adminlist`) VALUES
-(15, 'EditorForAdmin', '后台编辑器', '用于增强整站长文本的输入和显示', 1, '{"editor_type":"2","editor_wysiwyg":"2","editor_height":"500px","editor_resize_type":"1"}', 'thinkphp', '0.1', 1383126253, 0),
+(15, 'EditorForAdmin', '后台编辑器', '用于增强整站长文本的输入和显示', 1, '{"editor_type":"2","editor_wysiwyg":"1","editor_height":"500px","editor_resize_type":"1"}', 'thinkphp', '0.1', 1383126253, 0),
 (2, 'SiteStat', '站点统计信息', '统计站点的基础信息', 1, '{"title":"\\u7cfb\\u7edf\\u4fe1\\u606f","width":"1","display":"1","status":"0"}', 'thinkphp', '0.1', 1379512015, 0),
 (3, 'DevTeam', '开发团队信息', '开发团队成员信息', 1, '{"title":"OneThink\\u5f00\\u53d1\\u56e2\\u961f","width":"2","display":"1"}', 'thinkphp', '0.1', 1379512022, 0),
 (4, 'SystemInfo', '系统环境信息', '用于显示一些服务器的信息', 1, '{"title":"\\u7cfb\\u7edf\\u4fe1\\u606f","width":"2","display":"1"}', 'thinkphp', '0.1', 1379512036, 0),
@@ -723,7 +723,7 @@ CREATE TABLE IF NOT EXISTS `winshop_document` (
   PRIMARY KEY (`id`),
   KEY `idx_category_status` (`category_id`,`status`),
   KEY `idx_status_type_pid` (`status`,`uid`,`pid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='文档模型基础表' AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='文档模型基础表' AUTO_INCREMENT=4 ;
 
 --
 -- 转存表中的数据 `winshop_document`
@@ -731,7 +731,8 @@ CREATE TABLE IF NOT EXISTS `winshop_document` (
 
 INSERT INTO `winshop_document` (`id`, `uid`, `name`, `title`, `category_id`, `description`, `root`, `pid`, `model_id`, `type`, `position`, `link_id`, `cover_id`, `display`, `deadline`, `attach`, `view`, `comment`, `extend`, `level`, `create_time`, `update_time`, `status`) VALUES
 (1, 1, '', 'OneThink1.0正式版发布', 2, '大家期待的OneThink正式版发布', 0, 0, 2, 2, 0, 0, 0, 1, 0, 0, 30, 0, 0, 0, 1387260660, 1387263112, 1),
-(2, 1, '', '测试文章', 2, '', 0, 0, 2, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1396146435, 1396146435, 1);
+(2, 1, '', '测试文章', 2, '', 0, 0, 2, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1396146435, 1396146435, 1),
+(3, 1, '', '文章测试', 2, '', 2, 2, 2, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1397444986, 1397444986, 1);
 
 -- --------------------------------------------------------
 
@@ -754,7 +755,8 @@ CREATE TABLE IF NOT EXISTS `winshop_document_article` (
 
 INSERT INTO `winshop_document_article` (`id`, `parse`, `content`, `template`, `bookmark`) VALUES
 (1, 0, '<h1>\r\n	OneThink1.0正式版发布&nbsp;\r\n</h1>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>OneThink是一个开源的内容管理框架，基于最新的ThinkPHP3.2版本开发，提供更方便、更安全的WEB应用开发体验，采用了全新的架构设计和命名空间机制，融合了模块化、驱动化和插件化的设计理念于一体，开启了国内WEB应用傻瓜式开发的新潮流。&nbsp;</strong> \r\n</p>\r\n<h2>\r\n	主要特性：\r\n</h2>\r\n<p>\r\n	1. 基于ThinkPHP最新3.2版本。\r\n</p>\r\n<p>\r\n	2. 模块化：全新的架构和模块化的开发机制，便于灵活扩展和二次开发。&nbsp;\r\n</p>\r\n<p>\r\n	3. 文档模型/分类体系：通过和文档模型绑定，以及不同的文档类型，不同分类可以实现差异化的功能，轻松实现诸如资讯、下载、讨论和图片等功能。\r\n</p>\r\n<p>\r\n	4. 开源免费：OneThink遵循Apache2开源协议,免费提供使用。&nbsp;\r\n</p>\r\n<p>\r\n	5. 用户行为：支持自定义用户行为，可以对单个用户或者群体用户的行为进行记录及分享，为您的运营决策提供有效参考数据。\r\n</p>\r\n<p>\r\n	6. 云端部署：通过驱动的方式可以轻松支持平台的部署，让您的网站无缝迁移，内置已经支持SAE和BAE3.0。\r\n</p>\r\n<p>\r\n	7. 云服务支持：即将启动支持云存储、云安全、云过滤和云统计等服务，更多贴心的服务让您的网站更安心。\r\n</p>\r\n<p>\r\n	8. 安全稳健：提供稳健的安全策略，包括备份恢复、容错、防止恶意攻击登录，网页防篡改等多项安全管理功能，保证系统安全，可靠、稳定的运行。&nbsp;\r\n</p>\r\n<p>\r\n	9. 应用仓库：官方应用仓库拥有大量来自第三方插件和应用模块、模板主题，有众多来自开源社区的贡献，让您的网站“One”美无缺。&nbsp;\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>&nbsp;OneThink集成了一个完善的后台管理体系和前台模板标签系统，让你轻松管理数据和进行前台网站的标签式开发。&nbsp;</strong> \r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<h2>\r\n	后台主要功能：\r\n</h2>\r\n<p>\r\n	1. 用户Passport系统\r\n</p>\r\n<p>\r\n	2. 配置管理系统&nbsp;\r\n</p>\r\n<p>\r\n	3. 权限控制系统\r\n</p>\r\n<p>\r\n	4. 后台建模系统&nbsp;\r\n</p>\r\n<p>\r\n	5. 多级分类系统&nbsp;\r\n</p>\r\n<p>\r\n	6. 用户行为系统&nbsp;\r\n</p>\r\n<p>\r\n	7. 钩子和插件系统\r\n</p>\r\n<p>\r\n	8. 系统日志系统&nbsp;\r\n</p>\r\n<p>\r\n	9. 数据备份和还原\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	&nbsp;[ 官方下载：&nbsp;<a href="http://www.onethink.cn/download.html" target="_blank">http://www.onethink.cn/download.html</a>&nbsp;&nbsp;开发手册：<a href="http://document.onethink.cn/" target="_blank">http://document.onethink.cn/</a>&nbsp;]&nbsp;\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>OneThink开发团队 2013</strong> \r\n</p>', '', 0),
-(2, 0, '<p>测试法术打击飞发送到范德萨发送到方式方式发生地方都是</p>', '', 0);
+(2, 0, '<p>测试法术打击飞发送到范德萨发送到方式方式发生地方都是</p>', '', 0),
+(3, 0, '<p>文章测试文章测试文章测试文章测试文章测试文章测试</p><p><br/></p><p><br/></p><p>文章测试</p><p><br/></p><p><br/></p><p><br/></p><p>文章测试</p>', '', 0);
 
 -- --------------------------------------------------------
 
@@ -890,7 +892,7 @@ CREATE TABLE IF NOT EXISTS `winshop_member` (
 --
 
 INSERT INTO `winshop_member` (`uid`, `nickname`, `sex`, `birthday`, `qq`, `score`, `login`, `reg_ip`, `reg_time`, `last_login_ip`, `last_login_time`, `status`) VALUES
-(1, 'admin', 0, '0000-00-00', '', 30, 10, 0, 1394589845, 2130706433, 1397442697, 1);
+(1, 'admin', 0, '0000-00-00', '', 30, 11, 0, 1394589845, 2130706433, 1398827428, 1);
 
 -- --------------------------------------------------------
 
@@ -918,7 +920,7 @@ CREATE TABLE IF NOT EXISTS `winshop_menu` (
 
 INSERT INTO `winshop_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `tip`, `group`, `is_dev`) VALUES
 (1, '首页', 0, 1, 'Index/index', 0, '', '', 0),
-(2, '内容', 0, 2, 'Article/mydocument', 0, '', '', 0),
+(2, '文章', 0, 2, 'Article/mydocument', 0, '', '', 0),
 (3, '文档列表', 2, 0, 'article/index', 1, '', '内容', 0),
 (4, '新增', 3, 0, 'article/add', 0, '', '', 0),
 (5, '编辑', 3, 0, 'article/edit', 0, '', '', 0),
@@ -1095,7 +1097,7 @@ CREATE TABLE IF NOT EXISTS `winshop_picture` (
   `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- 转存表中的数据 `winshop_picture`
@@ -1105,7 +1107,8 @@ INSERT INTO `winshop_picture` (`id`, `path`, `url`, `md5`, `sha1`, `status`, `cr
 (1, '/Uploads/Picture/2014-03-30/53377d2cccd5f.png', '', 'f4a5a6ae9aa965ed10971d57e3dbc9ba', 'af0eb640a8c57975c3d2daca6aa88ad9745bb9a3', 1, 1396145452),
 (2, '/Uploads/Picture/2014-04-02/533bda4a612db.jpg', '', '7baccde02f083734793cf6a0daf6c03e', 'fd3809d9e53bb068b2625e52b729073899608ffd', 1, 1396431434),
 (3, '/Uploads/Picture/2014-04-02/533bda4f44e33.jpg', '', '3c992f42c3b3fdb03907151ddcea43e8', 'a57418281ffd57d28eea7c218d1222359d69d739', 1, 1396431439),
-(4, '/Uploads/Picture/2014-04-14/534b48a67e491.jpg', '', '34b38ec1ece847d3f7a058eaf29aba0e', '5ec90b45909d46524de2c84c41f0e5fe81573288', 1, 1397442726);
+(4, '/Uploads/Picture/2014-04-14/534b48a67e491.jpg', '', '34b38ec1ece847d3f7a058eaf29aba0e', '5ec90b45909d46524de2c84c41f0e5fe81573288', 1, 1397442726),
+(5, '/Uploads/Picture/2014-04-30/5360a004d9a8d.jpg', '', '181c516d36724c018f583bab45a8fbce', '21c7ba4a522c7a211ec065219dae3e3ebc8c3cb1', 1, 1398841348);
 
 -- --------------------------------------------------------
 
@@ -1170,7 +1173,7 @@ CREATE TABLE IF NOT EXISTS `winshop_ucenter_member` (
 --
 
 INSERT INTO `winshop_ucenter_member` (`id`, `username`, `password`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `status`) VALUES
-(1, 'admin', 'd9f65d23b4429c44536ae1a0483bde8c', 'yuwenhui1986@163.com', '', 1394589845, 2130706433, 1397442697, 2130706433, 1394589845, 1);
+(1, 'admin', 'd9f65d23b4429c44536ae1a0483bde8c', 'yuwenhui1986@163.com', '', 1394589845, 2130706433, 1398827428, 2130706433, 1394589845, 1);
 
 -- --------------------------------------------------------
 
